@@ -23,8 +23,12 @@ namespace Matriks.ClientAPI.Setup
 
       AddMenu("collecting", "views.firstpage");
       AddMenu("FirstPage", "views.firstpage");
+      AddMenu("LoadingPage", "views.loadingpage");
+      AddMenu("ComplatedPage", "views.complatedpage");
 
       MenuListBox.SelectionChanged += MenuListBox_SelectionChanged;
+
+      App.LayoutRoot = LayoutRoot;
     }
 
     private void MenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -48,8 +52,7 @@ namespace Matriks.ClientAPI.Setup
 
     private void Navigate(string viewName)
     {
-      var n = NavigationService.Navigate(viewName, true);
-      LayoutRoot.Navigate(n.View);
+      App.Navigate(viewName);
     }
 
     public ObservableCollection<MenuModel> Menus

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using Matriks.ClientAPI.Setup.Core;
@@ -20,6 +21,14 @@ namespace Matriks.ClientAPI.Setup
   public partial class App : Application
   {
     public new static Dispatcher Dispatcher { get; private set; }
+
+    public static Frame LayoutRoot { get; set; }
+
+    public static void Navigate(string viewName)
+    {
+      var n = NavigationService.Navigate(viewName, true);
+      LayoutRoot.Navigate(n.View);
+    }
 
     [STAThread]
     protected override void OnStartup(StartupEventArgs e)

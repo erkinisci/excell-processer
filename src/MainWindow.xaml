@@ -104,7 +104,7 @@
               </TextBlock.Style>
             </TextBlock>
           </Canvas>
-          <TextBlock Text="Price Server" VerticalAlignment="Center" FontSize="14" />
+          <TextBlock Text="Yükleniyor" VerticalAlignment="Center" FontSize="14" />
         </StackPanel>
       </ListBoxItem>
       <ListBoxItem>
@@ -123,7 +123,7 @@
               </TextBlock.Style>
             </TextBlock>
           </Canvas>
-          <TextBlock Text="DB Updater" VerticalAlignment="Center" FontSize="14" />
+          <TextBlock Text="Yükleme Tamamlanıyor" VerticalAlignment="Center" FontSize="14" />
         </StackPanel>
       </ListBoxItem>
     </ListBox>

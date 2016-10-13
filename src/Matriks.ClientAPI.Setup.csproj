@@ -83,8 +83,8 @@
     <Compile Include="Core\Windows\WindowFeatures.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="NetworkPanelStatus.cs" />
-    <Compile Include="Models\PacketModel.cs" />
     <Compile Include="Bootstrapter.cs" />
+    <Compile Include="ViewModels\LoadingPageModel.cs" />
     <Compile Include="ViewModels\FirstPageModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +108,14 @@
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ComplatedPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoadingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\FirstPage.xaml">
       <SubType>Designer</SubType>

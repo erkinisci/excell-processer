@@ -13,6 +13,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
   {
     private IAppSettings _appSettings;
     public DelegateCommand FilePathDialogCommand { get; set; }
+    public DelegateCommand NextPageCommand { get; set; }
 
     public override void OnNavigate(UriQuery query)
     {
@@ -27,6 +28,12 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 
       FilePath = _appSettings.GetString("FilePath");
       FilePathDialogCommand = new DelegateCommand(OnFilePathDialogCommand);
+      NextPageCommand =  new DelegateCommand(OnNextPageCommand);
+    }
+
+    private void OnNextPageCommand()
+    {
+      App.Navigate("/views/loadingpage.xaml");
     }
 
     private void OnFilePathDialogCommand()

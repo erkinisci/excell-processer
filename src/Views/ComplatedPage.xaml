@@ -1,0 +1,55 @@
+﻿<Page x:Class="Matriks.ClientAPI.Setup.Views.ComplatedPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="440">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0" Height="32" Margin="10,0,10,0" TextWrapping="Wrap" Text="Yükleme Tamamlandı" VerticalAlignment="Center" FontSize="20" Foreground="#e5e5e5" />
+
+
+    <Canvas Grid.Row="1">
+      <Grid Name="BackgroundGrid" Width="48" Height="48" Visibility="Visible" Canvas.Left="199" Canvas.Top="81">
+        <Path Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z" Stretch="Fill" Fill="#26C281" Name="Stroke" Visibility="Visible" Margin="-1,0,1,0" />
+      </Grid>
+
+
+      <Path Stretch="Uniform" Fill="#26C281" Width="32" Height="32" Canvas.Left="205.6" Canvas.Top="88.2" RenderTransformOrigin="0.5,0.5">
+        <Path.Data>
+          <PathGeometry FillRule="Nonzero" Figures="M17.5625,25.0475006103516L20.30078125,25.2662506103516 22.765625,25.9225006103516 24.95703125,27.0162506103516 26.875,28.5475006103516 28.255859375,30.1725006103516 29.2421875,31.9850025177002 29.833984375,33.9850006103516 30.03125,36.1725006103516 29.3671875,40.2975006103516 27.375,43.6100006103516 24.703125,45.6881256103516 21.25,46.9850006103516 21.25,47.3912506103516 25.6484375,49.0943756103516 28.84375,51.9537506103516 30.5546855926514,55.2896881103516 31.125,59.2350006103516 30.8593730926514,62.2564849853516 30.0624980926514,64.9459381103516 28.734375,67.3033599853516 26.875,69.3287506103516 24.9296875,70.7369537353516 22.75,71.7428131103516 20.3359375,72.3463287353516 17.6875,72.5475006103516 13.029296875,72.0025787353516 9.1484375,70.3678131103516 6.044921875,67.6432037353516 3.71875023841858,63.8287506103516 7.5625,62.1725006103516 9.4765625,65.5240631103516 11.90625,67.7037506103516 14.4921875,68.7350006103516 17.6875,69.0787506103516 21.671875,68.3287506103516 24.6875,66.0787506103516 26.3515605926514,63.0865631103516 26.90625,59.3600006103516 26.7050762176514,56.9557037353516 26.1015605926514,54.8678131103516 25.095703125,53.0963287353516 23.6875,51.6412506103516 20.21875,49.8834381103516 15.625,49.2975006103516 12.03125,49.2975006103516 12.03125,45.6412506103516 15.25,45.6412506103516 20.046875,44.9459381103516 23.5,42.8600006103516 25.2812480926514,40.0865631103516 25.875,36.5162506103516 25.2031230926514,32.9693756103516 23.1875,30.3287506103516 20.6328125,28.9693756103516 17.46875,28.5162506103516 14.3359375,29.0006256103516 11.6875,30.4537506103516 9.7734375,32.5865631103516 8.46875,35.4225006103516 4.625,33.8912506103516 6.890625,29.8990650177002 10.125,27.0475006103516 13.5781240463257,25.5475006103516 17.5625,25.0475006103516z" />
+        </Path.Data>
+        <Path.RenderTransform>
+          <TransformGroup>
+            <TransformGroup.Children>
+              <RotateTransform Angle="0" />
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+            </TransformGroup.Children>
+          </TransformGroup>
+        </Path.RenderTransform>
+      </Path>
+
+      <TextBlock Height="34" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="YÜKLENDİ" VerticalAlignment="Top" FontSize="30" Foreground="#26C281" Width="440" Canvas.Top="133" />
+      <CheckBox x:Name="CheckBox" Content="ClientApi Monitor Uygulamasını Başlat" FontSize="14" Foreground="#26C281" Width="350" Canvas.Left="20" Canvas.Top="194" />
+    </Canvas>
+
+    <Grid Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <Button Width="100" Grid.Column="0" Height="24" Content="Geri" IsEnabled="False" HorizontalAlignment="Right" Margin="5"  Style="{StaticResource TransparentButton}"/>
+      <Button Width="100" Grid.Column="1" Height="24" Content="Son" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}"/>
+      <Button Width="100" Grid.Column="2" Height="24" Content="İptal"  IsEnabled="False" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}"/>
+
+
+    </Grid>
+  </Grid>
+</Page>

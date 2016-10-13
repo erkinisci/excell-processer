@@ -16,7 +16,7 @@
   <!--<SolidColorBrush x:Key="WindowButtonPressedColor" Color="#D84939" />-->
   <!--<SolidColorBrush x:Key="WindowButtonPressedColor" Color="#3975D8" />-->
   <SolidColorBrush x:Key="WindowButtonPressedColor" Color="#2b3643" />
-  
+
 
 
   <SolidColorBrush x:Key="Turquoise" Color="#1abc9c" />
@@ -61,12 +61,12 @@
   <SolidColorBrush x:Key="TitleGradientBrush" Color="#34495e" />
   <SolidColorBrush x:Key="StatuGradientBrush" Color="#34495e" />
   <SolidColorBrush x:Key="TitleCloseGradientBrush" Color="#34495e" />
- 
- 
+
+
   <!--<LinearGradientBrush x:Key="TitleCloseGradientBrush" EndPoint="1,1" StartPoint="0,0" >
     <GradientStop Color="#FB289A" Offset="0"/>
     <GradientStop Color="#EA8A08" Offset="1"/>
-  </LinearGradientBrush>--> 
+  </LinearGradientBrush>-->
 
   <!--<LinearGradientBrush x:Key="StatuGradientBrush" EndPoint="1,1" StartPoint="0,0" >
     <GradientStop Color="#E63094" Offset="0"/>
@@ -578,6 +578,7 @@
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+
   </Style>
   <Style TargetType="ListBoxItem">
     <Setter Property="Padding" Value="3" />
@@ -586,6 +587,7 @@
     <Setter Property="VerticalContentAlignment" Value="Top" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0"/>
+
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="ListBoxItem">
@@ -611,7 +613,7 @@
                     <DoubleAnimation Storyboard.TargetName="fillColor2" Storyboard.TargetProperty="Opacity"  Duration="00:00:00.250" From="0" To="1" />
                   </Storyboard>
                 </VisualState>
-              </VisualStateGroup> 
+              </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
             <Rectangle x:Name="fillColor" Opacity="0"  StrokeThickness="0" Fill="{StaticResource MetronicMenuHover}" IsHitTestVisible="False" RadiusX="0" RadiusY="0"/>
             <Rectangle x:Name="fillColor2" Opacity="0" StrokeThickness="0"  Fill="#FF1B191C" IsHitTestVisible="False" RadiusX="0" 
@@ -621,7 +623,7 @@
                               Content="{TemplateBinding Content}"
                               ContentTemplate="{TemplateBinding ContentTemplate}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              Margin="{TemplateBinding Padding}"/> 
+                              Margin="{TemplateBinding Padding}"/>
           </Grid>
         </ControlTemplate>
       </Setter.Value>
@@ -661,7 +663,7 @@
               <RowDefinition Height="0.00001*" />
             </Grid.RowDefinitions>
 
-            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true"  Focusable="false"> 
+            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true"  Focusable="false">
               <Track.Thumb>
                 <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{StaticResource ScrollThumbs}" />
               </Track.Thumb>
@@ -711,11 +713,11 @@
     </Setter>
   </Style>
 
-    <ControlTemplate x:Key="FrameKey" TargetType="Frame">
-        <Border Margin="0">
-            <ContentPresenter />
-        </Border>
-    </ControlTemplate>
+  <ControlTemplate x:Key="FrameKey" TargetType="Frame">
+    <Border Margin="0">
+      <ContentPresenter />
+    </Border>
+  </ControlTemplate>
 
   <LinearGradientBrush x:Key="TextBox.Static.Background" StartPoint="0.5,0" EndPoint="0.5,1" d:Freeze="True">
     <GradientStop Color="#FF2a2a29" Offset="0.0"/>

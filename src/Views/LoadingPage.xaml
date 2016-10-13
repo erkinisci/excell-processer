@@ -1,0 +1,57 @@
+﻿<Page x:Class="Matriks.ClientAPI.Setup.Views.LoadingPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="440">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0" Height="32" Margin="10,0,10,0" TextWrapping="Wrap" Text="Kurulum Hazır" VerticalAlignment="Center" FontSize="20" Foreground="#e5e5e5" />
+
+
+    <Canvas Grid.Row="1">
+      <Grid Name="BackgroundGrid" Width="48" Height="48" Visibility="Visible" Canvas.Left="199" Canvas.Top="81">
+        <Path Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z" Stretch="Fill" Fill="#E7505A" Name="Stroke" Visibility="Visible" Margin="-1,0,1,0" />
+      </Grid>
+
+      <Path Stretch="Uniform" Fill="#FFE7505A" Width="32" Height="32" Canvas.Left="205.6" Canvas.Top="87.063">
+        <Path.Data>
+          <PathGeometry FillRule="Nonzero" Figures="M27.28125,37.569580078125L31.458984375,37.900634765625 35.1796875,38.893798828125 38.443359375,40.549072265625 41.25,42.866455078125 43.2802734375,45.4152870178223 44.73046875,48.3273963928223 45.6005859375,51.6027870178223 45.890625,55.241455078125 45.6826171875,58.2502479553223 45.05859375,61.1359901428223 44.0185546875,63.8986854553223 42.5625,66.538330078125 40.6875,69.081298828125 38.203125,71.928955078125 35.109375,75.081298828125 31.40625,78.538330078125 25.13671875,84.468017578125 19.875,90.397705078125 15.62109375,96.327392578125 12.375,102.257080078125 45.984375,102.257080078125 45.984375,107.553955078125 6.328125,107.553955078125 6.328125,102.819580078125 9.8583984375,95.738525390625 14.49609375,88.745361328125 20.2412109375,81.840087890625 27.09375,75.022705078125 30.6943359375,71.533447265625 33.62109375,68.425048828125 35.8740234375,65.697509765625 37.453125,63.350830078125 39.03515625,59.4953651428223 39.5625,55.241455078125 39.3193359375,52.3439979553223 38.58984375,49.7922401428223 37.3740234375,47.5861854553223 35.671875,45.725830078125 31.88671875,43.581298828125 27.1875,42.866455078125 24.380859375,43.09130859375 21.8671875,43.765869140625 19.646484375,44.89013671875 17.71875,46.464111328125 16.083984375,48.48779296875 14.7421875,50.961181640625 13.693359375,53.88427734375 12.9375,57.257080078125 6.890625,55.710205078125 8.1064453125,51.274658203125 9.83203125,47.436767578125 12.0673828125,44.196533203125 14.8125,41.553955078125 17.490234375,39.810791015625 20.4609375,38.565673828125 23.724609375,37.818603515625 27.28125,37.569580078125z" />
+        </Path.Data>
+        <Path.RenderTransform>
+          <TransformGroup>
+            <TransformGroup.Children>
+              <RotateTransform Angle="0" />
+              <ScaleTransform ScaleX="1" ScaleY="1" />
+            </TransformGroup.Children>
+          </TransformGroup>
+        </Path.RenderTransform>
+      </Path>
+      <TextBlock Height="34" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="YÜKLENİYOR" VerticalAlignment="Top" FontSize="30" Foreground="#FFE7505A" Width="440" Canvas.Top="133" />
+      <TextBlock Height="20" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" Text="Yükelemeye başlamak için YÜKLE yi seçin. Eğer düzeltme yapmak istiyorsanız GERİ yi seçin." VerticalAlignment="Top" FontSize="14" Foreground="#FFE7505A" Width="420" Canvas.Left="10" Canvas.Top="172" />
+      <TextBlock Height="20" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" Text="İptal etmek için İPTAL e basın." VerticalAlignment="Top" FontSize="14" Foreground="#FFE7505A" Width="420" Canvas.Left="10" Canvas.Top="192" />
+
+      <ProgressBar Width="300" Canvas.Left="56" Canvas.Top="230" Height="25"/>
+    </Canvas>
+
+
+    <Grid Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <Button Width="100" Grid.Column="0" Height="24" Content="Geri" HorizontalAlignment="Right" Margin="5"  Style="{StaticResource TransparentButton}" Command="{Binding ReturnCommand}"/>
+      <Button Width="100" Grid.Column="1" Height="24" Content="Yükle" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}" Command="{Binding LoadCommand}"/>
+      <Button Width="100" Grid.Column="2" Height="24" Content="İptal" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}" Command="{Binding CancelCommand}"/>
+
+    
+    </Grid>
+  </Grid>
+</Page>

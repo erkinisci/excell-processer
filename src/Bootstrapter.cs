@@ -10,6 +10,8 @@ namespace Matriks.ClientAPI.Setup
     public void Initialize()
     {
       NavigationService.RegisterViewModel("/Views/FirstPage.xaml", typeof(FirstPageModel));
+      NavigationService.RegisterViewModel("/Views/LoadingPage.xaml", typeof(LoadingPageModel));
+      NavigationService.RegisterViewModel("/Views/ComplatedPage.xaml", typeof(LoadingPageModel));
     }
   }
 }

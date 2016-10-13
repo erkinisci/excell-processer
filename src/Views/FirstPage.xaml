@@ -53,9 +53,9 @@
         <ColumnDefinition/>
         <ColumnDefinition/>
       </Grid.ColumnDefinitions>
-      <Button Width="100" Grid.Column="0" Height="24" Content="Geri" HorizontalAlignment="Right" Margin="5"  Style="{StaticResource TransparentButton}"/>
-      <Button Width="100" Grid.Column="1" Height="24" Content="İleri" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}"/>
-      <Button Width="100" Grid.Column="2" Height="24" Content="İptal" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}"/>
+      <Button Width="100" Grid.Column="0" Height="24" Content="Geri" HorizontalAlignment="Right" IsEnabled="False" Margin="5"  Style="{StaticResource TransparentButton}"/>
+      <Button Width="100" Grid.Column="1" Height="24" Content="İleri" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}" Command="{Binding NextPageCommand}"/>
+      <Button Width="100" Grid.Column="2" Height="24" Content="İptal" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}" Command="{Binding CancelCommand}"/>
 
     </Grid>
   </Grid>
