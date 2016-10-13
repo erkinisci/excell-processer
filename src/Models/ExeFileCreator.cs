@@ -41,9 +41,10 @@ namespace Matriks.ClientAPI.Setup.Models
         }
         else
         {
-          var filePaths = Directory.GetFiles(_destinationFolder);
-          foreach (var filePath in filePaths)
-            File.Delete(filePath);
+          Directory.Delete(_destinationFolder);
+        //  var filePaths = Directory.GetFiles(_destinationFolder);
+        //  foreach (var filePath in filePaths)
+        //    File.Delete(filePath);
         }
 
         if (zipStream != null)
@@ -60,7 +61,7 @@ namespace Matriks.ClientAPI.Setup.Models
           {
             foreach (var entry in archive.Entries)
             {
-              Thread.Sleep(1000);
+              Thread.Sleep(200);
               if (entry.Length > 0)
               {
                 var fileName = Path.Combine(_destinationFolder, entry.Name);
