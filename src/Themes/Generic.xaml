@@ -289,6 +289,30 @@
     </Setter>
   </Style>
 
+  <Style TargetType="{x:Type Button}" x:Key="TransparentButton">
+    <Setter Property="Height" Value="33" />
+    <Setter Property="Width" Value="34" />
+    <Setter Property="Background" Value="#95A5A6" />
+    <Setter Property="Foreground" Value="White" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type Button}">
+          <Border Background="{TemplateBinding Background}" BorderThickness="1" CornerRadius="3" BorderBrush="#FF1F253D">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" />
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter Property="Background" Value="#798D8F" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+              <Setter Property="Background" Value="#687B7C" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
 
 
   <Style TargetType="{x:Type Button}" x:Key="RedButton">
