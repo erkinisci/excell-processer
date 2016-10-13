@@ -42,17 +42,7 @@
           </TextBlock>
         </Label.Content>
       </Label>
-      <TextBox Height="25" Width="300" Canvas.Left="56" Canvas.Top="210">
-        <!--<TextBox.Style>
-          <Style TargetType="TextBox">
-            <Style.Triggers>
-              <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="#FF353946"/>
-              </Trigger>
-            </Style.Triggers>
-          </Style>
-        </TextBox.Style>-->
-      </TextBox>
+      <TextBox Height="25" Width="300" Canvas.Left="56" Canvas.Top="210" Text="{Binding FilePath}"/>
       <Button Width="75" Height="24" Canvas.Left="356" Canvas.Top="210" Content="Gözat..." Style="{StaticResource TransparentButton}"/>
     </Canvas>
 
