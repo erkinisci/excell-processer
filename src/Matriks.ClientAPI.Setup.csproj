@@ -72,17 +72,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\IMonitorFeed.cs" />
-    <Compile Include="Core\MonitorServer.cs" />
-    <Compile Include="Core\MonitorServerReceiveHandler.cs" />
-    <Compile Include="Core\MonitorViewRegister.cs" />
-    <Compile Include="Core\ThreadExtensions.cs" />
     <Compile Include="Core\UIAppSettings.cs" />
     <Compile Include="Core\Windows\NativeMethods.cs" />
     <Compile Include="Core\Windows\WindowCloseCommand.cs" />
     <Compile Include="Core\Windows\WindowFeatures.cs" />
     <Compile Include="Models\LogModel.cs" />
-    <Compile Include="NetworkPanelStatus.cs" />
     <Compile Include="Bootstrapter.cs" />
     <Compile Include="ViewModels\LoadingPageModel.cs" />
     <Compile Include="ViewModels\FirstPageModel.cs" />
