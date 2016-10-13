@@ -12,7 +12,7 @@
   mc:Ignorable="d"
   windows:WindowFeatures.Statu="0"
   d:DataContext="{d:DesignInstance setup:MainWindow}"
-  Title="CLIENT API MANAGER" Height="749" Width="962.334" Icon="Images/managerw.ico"
+  Title="CLIENT API MANAGER SETUP" Height="480" Width="640" Icon="Images/managerw.ico"
   FontFamily="/clientapimanager;component/Themes/Fonts/#Open Sans Condensed Light">
 
 

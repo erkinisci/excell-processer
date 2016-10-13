@@ -2,7 +2,7 @@
 
 namespace Matriks.ClientAPI.Setup.ViewModels
 {
-    public class ClientServerViewModel : NavigateObject
+    public class FirstPageModel : NavigateObject
     {
     }
 }

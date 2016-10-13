@@ -84,7 +84,7 @@
     <Compile Include="NetworkPanelStatus.cs" />
     <Compile Include="Models\PacketModel.cs" />
     <Compile Include="Bootstrapter.cs" />
-    <Compile Include="ViewModels\ClientServerViewModel.cs" />
+    <Compile Include="ViewModels\FirstPageModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
