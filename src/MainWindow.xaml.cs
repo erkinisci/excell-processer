@@ -21,21 +21,7 @@ namespace Matriks.ClientAPI.Setup
 
             Loaded += MainWindow_Loaded;
 
-            AddMenu("Dashboard", "views.dashboardview");
-            AddMenu("Client Server", "views.clientserverview");
-            AddMenu("Price Server", "views.priceserverview");
-            AddMenu("DB Updater", "views.clientserverview");
-
-            MenuListBox.SelectionChanged += MenuListBox_SelectionChanged;
-        }
-
-        private void MenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            foreach (var menuModel in Menus)
-                menuModel.IsActive = false;
-
-            Menus[MenuListBox.SelectedIndex].IsActive = true;
-            Navigate(Menus[MenuListBox.SelectedIndex].Root);
+            AddMenu("FirstPage", "views.firstpage");
         }
 
         protected void AddMenu(string name, string nameSpace)
@@ -45,7 +31,7 @@ namespace Matriks.ClientAPI.Setup
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Navigate("/views/dashboardview.xaml");
+            Navigate("/views/firstpage.xaml");
         }
 
         private void Navigate(string viewName)

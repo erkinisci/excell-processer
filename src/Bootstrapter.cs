@@ -1,4 +1,5 @@
 ﻿using Matriks.ClientAPI.Setup.ViewModels;
+using Matriks.ClientAPI.Setup.Views;
 using Matriks.Wpf;
 using Matriks.Wpf.Framework;
 
@@ -8,7 +9,7 @@ namespace Matriks.ClientAPI.Setup
   {
     public void Initialize()
     {
-      NavigationService.RegisterViewModel("/Views/ClientServerView.xaml", typeof(ClientServerViewModel));
+      NavigationService.RegisterViewModel("/Views/FirstPage.xaml", typeof(FirstPage));
     }
   }
 }
