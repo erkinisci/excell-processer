@@ -4,7 +4,6 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:ui="clr-namespace:Matriks.ClientAPI.UI"
-  xmlns:core="clr-namespace:Matriks.ClientAPI.UI.Core"
   xmlns:windows="clr-namespace:Matriks.ClientAPI.UI.Core.Windows"
   x:Class="Matriks.ClientAPI.UI.MainWindow"
   Style="{StaticResource StyleWindow}"
