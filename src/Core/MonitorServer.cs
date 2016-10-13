@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Matriks.Oms.EnterpriseLibrary.Network.Monitoring;
 
-namespace Matriks.ClientAPI.UI.Core
+namespace Matriks.ClientAPI.Setup.Core
 {
   public class MonitorServer
   {

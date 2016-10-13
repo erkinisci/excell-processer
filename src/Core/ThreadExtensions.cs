@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Threading;
 
-namespace Matriks.ClientAPI.UI.Core
+namespace Matriks.ClientAPI.Setup.Core
 {
   public static class ThreadExtensions
   {

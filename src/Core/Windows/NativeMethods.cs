@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Matriks.ClientAPI.UI.Core.Windows
+namespace Matriks.ClientAPI.Setup.Core.Windows
 {
   internal static class NativeMethods
   {

@@ -5,11 +5,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Client API Manager")]
-[assembly: AssemblyDescription("Client API Manager")]
+[assembly: AssemblyTitle("Client API Setup Manager")]
+[assembly: AssemblyDescription("Client API Setup Manager")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Matriks Bilgi Dağıtım A.Ş.")]
-[assembly: AssemblyProduct("Client API Manager")]
+[assembly: AssemblyProduct("Client API Setup Manager")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

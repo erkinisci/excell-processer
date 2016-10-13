@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Matriks.ClientAPI.UI.Core.Windows
+namespace Matriks.ClientAPI.Setup.Core.Windows
 {
   public static class WindowFeatures
   { 

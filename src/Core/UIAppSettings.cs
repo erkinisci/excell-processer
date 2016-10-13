@@ -5,7 +5,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using Matriks.Oms.EnterpriseLibrary.Configuration;
 
-namespace Matriks.ClientAPI.UI.Core
+namespace Matriks.ClientAPI.Setup.Core
 { 
   public class UIAppSettings : IAppSettings
   {

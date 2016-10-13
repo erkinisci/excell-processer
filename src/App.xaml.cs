@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
-using Matriks.ClientAPI.UI.Core;
-using Matriks.Wpf;
-using Matriks.Wpf.Framework;
+using Matriks.ClientAPI.Setup.Core;
 using Matriks.Oms.EnterpriseLibrary.Common;
 using Matriks.Oms.EnterpriseLibrary.Configuration;
 using Matriks.Oms.EnterpriseLibrary.Resolvers;
+using Matriks.Wpf;
+using Matriks.Wpf.Framework;
 
-namespace Matriks.ClientAPI.UI
+namespace Matriks.ClientAPI.Setup
 {
   /// <summary>
   /// Interaction logic for App.xaml

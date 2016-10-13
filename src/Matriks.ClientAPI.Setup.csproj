@@ -38,7 +38,7 @@
     <ApplicationIcon>Images\manager.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Matriks.ClientAPI.UI.App</StartupObject>
+    <StartupObject>Matriks.ClientAPI.Setup.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="matriks.wpf, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">

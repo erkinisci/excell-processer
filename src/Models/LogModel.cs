@@ -1,4 +1,4 @@
-﻿namespace Matriks.ClientAPI.UI.Models
+﻿namespace Matriks.ClientAPI.Setup.Models
 {
   public class LogModel
   {

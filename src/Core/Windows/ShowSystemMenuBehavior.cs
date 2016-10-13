@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Matriks.ClientAPI.UI.Core.Windows
+namespace Matriks.ClientAPI.Setup.Core.Windows
 {
     public static class ShowSystemMenuBehavior
     {        

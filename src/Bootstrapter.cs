@@ -1,8 +1,8 @@
-﻿using Matriks.ClientAPI.UI.ViewModels;
+﻿using Matriks.ClientAPI.Setup.ViewModels;
 using Matriks.Wpf;
 using Matriks.Wpf.Framework;
 
-namespace Matriks.ClientAPI.UI
+namespace Matriks.ClientAPI.Setup
 {
   public class Bootstrapter : MonitorBootstrapter
   {

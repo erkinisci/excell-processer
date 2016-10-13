@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace Matriks.ClientAPI.UI.Core.Windows
+namespace Matriks.ClientAPI.Setup.Core.Windows
 {
     public static class WindowResizeBehavior
     {

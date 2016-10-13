@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using Matriks.Wpf.Framework;
 using Matriks.Wpf.Models;
 
-namespace Matriks.ClientAPI.UI
+namespace Matriks.ClientAPI.Setup
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

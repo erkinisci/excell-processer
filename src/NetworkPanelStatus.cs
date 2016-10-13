@@ -1,4 +1,4 @@
-namespace Matriks.ClientAPI.UI
+namespace Matriks.ClientAPI.Setup
 {
   public enum NetworkPanelStatus
   {

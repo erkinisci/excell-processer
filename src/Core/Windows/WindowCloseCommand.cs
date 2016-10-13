@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace Matriks.ClientAPI.UI.Core.Windows
+namespace Matriks.ClientAPI.Setup.Core.Windows
 {
   public class WindowCloseCommand : ICommand
   {
