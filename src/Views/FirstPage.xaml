@@ -42,7 +42,7 @@
           </TextBlock>
         </Label.Content>
       </Label>
-      <TextBox Height="25" Width="300" Canvas.Left="56" Canvas.Top="210" Background="#FF353946" Foreground="White" BorderBrush="#FF353946">
+      <TextBox Height="25" Width="300" Canvas.Left="56" Canvas.Top="210">
         <!--<TextBox.Style>
           <Style TargetType="TextBox">
             <Style.Triggers>
