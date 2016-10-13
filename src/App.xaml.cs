@@ -26,8 +26,6 @@ namespace Matriks.ClientAPI.Setup
     {
       Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 10 });
 
-      Utils.Initialize();
-
       var module = new Bootstrapter();
       module.Initialize();
 

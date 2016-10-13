@@ -9,6 +9,7 @@
   Style="{StaticResource StyleWindow}"
   SnapsToDevicePixels="True"
   ResizeMode="CanMinimize"
+  WindowStartupLocation="CenterScreen"
   mc:Ignorable="d"
   windows:WindowFeatures.Statu="0"
   d:DataContext="{d:DesignInstance setup:MainWindow}"
