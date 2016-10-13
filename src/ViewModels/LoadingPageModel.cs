@@ -1,9 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Forms;
-using Matriks.Oms.EnterpriseLibrary;
-using Matriks.Oms.EnterpriseLibrary.Common;
-using Matriks.Oms.EnterpriseLibrary.Configuration;
+﻿using System.Windows;
 using Matriks.Wpf;
 using Matriks.Wpf.Framework.Commands;
 
@@ -11,7 +6,6 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 {
   public class LoadingPageModel : NavigateObject
   {
-    private IAppSettings _appSettings;
     public DelegateCommand LoadCommand { get; set; }
 
     public DelegateCommand ReturnCommand { get; set; }
