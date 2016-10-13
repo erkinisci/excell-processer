@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <settingGroup name="MonitorPort">
+    <add key="Price" value="4550" />
+    <add key="DbUpdater" value="4551" />
+    <add key="Client" value="4552" />
+  </settingGroup>
+</settings>
