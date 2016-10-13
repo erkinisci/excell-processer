@@ -35,7 +35,7 @@
 
       <TextBlock Height="34" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="KURULUM" VerticalAlignment="Top" FontSize="30" Foreground="#e5e5e5" Width="440" Canvas.Top="133" />
       <TextBlock Height="34" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="Yüklenecek Klasörü Seçin" VerticalAlignment="Top" FontSize="20" Foreground="#e5e5e5" Width="420" Canvas.Left="10" Canvas.Top="172" />
-      <Label Height="34" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="20" Foreground="#e5e5e5" Width="85" Canvas.Left="10" Canvas.Top="205">
+      <Label Height="34" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="20" Foreground="#e5e5e5" Width="86" Canvas.Left="6" Canvas.Top="202">
         <Label.Content>
           <TextBlock TextWrapping="Wrap">
           <Underline>K</Underline>lasör
@@ -43,7 +43,7 @@
         </Label.Content>
       </Label>
       <TextBox Height="25" Width="300" Canvas.Left="56" Canvas.Top="210" Text="{Binding FilePath}"/>
-      <Button Width="75" Height="24" Canvas.Left="356" Canvas.Top="210" Content="Gözat..." Style="{StaticResource TransparentButton}"/>
+      <Button Width="75" Height="24" Canvas.Left="356" Canvas.Top="210" Content="Gözat..." Style="{StaticResource TransparentButton}" Command="{Binding FilePathDialogCommand}"/>
     </Canvas>
 
 

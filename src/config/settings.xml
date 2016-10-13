@@ -5,4 +5,9 @@
     <add key="DbUpdater" value="4551" />
     <add key="Client" value="4552" />
   </settingGroup>
+
+  <settingGroup name="Application">
+    <add key="FilePath" value="C:\ClientApi\" />
+  </settingGroup>
+  
 </settings>
