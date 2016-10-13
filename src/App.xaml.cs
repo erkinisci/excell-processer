@@ -24,6 +24,18 @@ namespace Matriks.ClientAPI.Setup
 
     public static Frame LayoutRoot { get; set; }
 
+    public static ListBox MenuListBox { get; set; }
+
+    public static void MenuListBoxSelection(int index)
+    {
+      if (index < 0 && MenuListBox.SelectedIndex > -1)
+        MenuListBox.SelectedIndex = MenuListBox.SelectedIndex - 1;
+      else
+      {
+        MenuListBox.SelectedIndex = MenuListBox.SelectedIndex + 1;
+      }
+    }
+    
     public static void Navigate(string viewName)
     {
       var n = NavigationService.Navigate(viewName, true);

@@ -8,6 +8,7 @@
 
   <settingGroup name="Application">
     <add key="FilePath" value="C:\ClientApi\" />
+    <add key="ClientApiExeFileName" value="ClientApiManager.7z" />
   </settingGroup>
   
 </settings>

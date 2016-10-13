@@ -33,8 +33,11 @@
       <Frame Name="LayoutRoot" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Template="{StaticResource ResourceKey=FrameKey}" />
     </Grid>
 
-    <ListBox Grid.Column="0" 
-                 Height="399" 
+    <Canvas Grid.Column="0" Top="0" Left="0" Width="200">
+      <Border Height="399" Canvas.ZIndex="1" Width="200"  Background="Transparent"/>
+        <ListBox Canvas.ZIndex="0" 
+                 Height="399"
+                 Width="200"
                  VerticalAlignment="Top" 
                  Style="{StaticResource MenuStyle}"
                  Background="{x:Null}" BorderBrush="{x:Null}"
@@ -72,7 +75,7 @@
                 </Style>
               </TextBlock.Style>
             </TextBlock>
-            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf007;" Canvas.Top="5" Canvas.Left="5" FontSize="10" VerticalAlignment="Center">
+            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf002;" Canvas.Top="5" Canvas.Left="5" FontSize="10" VerticalAlignment="Center">
               <TextBlock.Style>
                 <Style TargetType="TextBlock">
                   <Setter Property="Foreground" Value="White"></Setter>
@@ -91,7 +94,7 @@
       <ListBoxItem>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
           <Canvas Margin="5,5,5,0" Width="25">
-            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf0d6;" FontSize="18" VerticalAlignment="Center">
+            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf019;" FontSize="18" VerticalAlignment="Center">
               <TextBlock.Style>
                 <Style TargetType="TextBlock">
                   <Setter Property="Foreground" Value="White"></Setter>
@@ -110,7 +113,7 @@
       <ListBoxItem>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
           <Canvas Margin="5,5,5,0" Width="25">
-            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf1c0;" FontSize="18" VerticalAlignment="Center">
+            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf046;" FontSize="18" VerticalAlignment="Center">
               <TextBlock.Style>
                 <Style TargetType="TextBlock">
                   <Setter Property="Foreground" Value="White"></Setter>
@@ -127,5 +130,7 @@
         </StackPanel>
       </ListBoxItem>
     </ListBox>
+    
+    </Canvas>
   </Grid>
 </Window>

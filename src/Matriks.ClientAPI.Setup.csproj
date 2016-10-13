@@ -140,6 +140,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="ExeFiles\ClientApiManager.7z" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

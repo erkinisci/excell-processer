@@ -1,4 +1,7 @@
 ﻿using System.Windows;
+using Matriks.Oms.EnterpriseLibrary;
+using Matriks.Oms.EnterpriseLibrary.Common;
+using Matriks.Oms.EnterpriseLibrary.Configuration;
 using Matriks.Wpf;
 using Matriks.Wpf.Framework.Commands;
 
@@ -6,6 +9,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 {
   public class LoadingPageModel : NavigateObject
   {
+    private IAppSettings _appSettings;
     public DelegateCommand LoadCommand { get; set; }
 
     public DelegateCommand ReturnCommand { get; set; }
@@ -15,18 +19,24 @@ namespace Matriks.ClientAPI.Setup.ViewModels
     {
       base.OnLoaded(view);
 
+      _appSettings = DependencyContainer.Resolver.GetService<IAppSettings>("UISettings");
+
       LoadCommand = new DelegateCommand(OnLoadCommand);
       ReturnCommand = new DelegateCommand(OnReturnCommand);
     }
 
     private void OnReturnCommand()
     {
-      App.LayoutRoot.GoBack();
+      App.MenuListBoxSelection(-1);
     }
 
     private void OnLoadCommand()
     {
-      App.Navigate("/views/complatedpage.xaml");
+      
+      var clientApiFileName = _appSettings.GetString("ClientApiExeFileName");
+
+
+      App.MenuListBoxSelection(1);
     }
   }
 }

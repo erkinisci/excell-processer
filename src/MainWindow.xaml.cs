@@ -29,6 +29,7 @@ namespace Matriks.ClientAPI.Setup
       MenuListBox.SelectionChanged += MenuListBox_SelectionChanged;
 
       App.LayoutRoot = LayoutRoot;
+      App.MenuListBox = MenuListBox;
     }
 
     private void MenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
