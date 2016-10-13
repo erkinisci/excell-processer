@@ -52,6 +52,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -76,6 +78,7 @@
     <Compile Include="Core\Windows\NativeMethods.cs" />
     <Compile Include="Core\Windows\WindowCloseCommand.cs" />
     <Compile Include="Core\Windows\WindowFeatures.cs" />
+    <Compile Include="Models\ExeFileCreator.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Bootstrapter.cs" />
     <Compile Include="ViewModels\LoadingPageModel.cs" />
@@ -140,7 +143,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <Resource Include="ExeFiles\ClientApiManager.7z" />
+    <EmbeddedResource Include="ExeFiles\ClientAPIMonitor.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

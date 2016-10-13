@@ -36,7 +36,7 @@
       </Path>
 
       <TextBlock Height="34" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="YÜKLENDİ" VerticalAlignment="Top" FontSize="30" Foreground="#26C281" Width="440" Canvas.Top="133" />
-      <CheckBox x:Name="CheckBox" Content="ClientApi Monitor Uygulamasını Başlat" FontSize="14" Foreground="#26C281" Width="350" Canvas.Left="20" Canvas.Top="194" />
+      <CheckBox x:Name="CheckBox" Content="ClientApi Monitor Uygulamasını Başlat" FontSize="14" Foreground="#26C281" Width="350" Canvas.Left="20" Canvas.Top="194" IsChecked="{Binding IsApplicationStart}"/>
     </Canvas>
 
     <Grid Row="2">
@@ -46,7 +46,7 @@
         <ColumnDefinition/>
       </Grid.ColumnDefinitions>
       <Button Width="100" Grid.Column="0" Height="24" Content="Geri" IsEnabled="False" HorizontalAlignment="Right" Margin="5"  Style="{StaticResource TransparentButton}"/>
-      <Button Width="100" Grid.Column="1" Height="24" Content="Son" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}"/>
+      <Button Width="100" Grid.Column="1" Height="24" Content="Son" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}" Command="{Binding LastCommand}"/>
       <Button Width="100" Grid.Column="2" Height="24" Content="İptal"  IsEnabled="False" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}"/>
 
 

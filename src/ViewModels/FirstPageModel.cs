@@ -23,7 +23,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 
       _appSettings = DependencyContainer.Resolver.GetService<IAppSettings>("UISettings");
 
-      FilePath = _appSettings.GetString("FilePath");
+      App.FileOutputPath = FilePath = _appSettings.GetString("FilePath");
       FilePathDialogCommand = new DelegateCommand(OnFilePathDialogCommand);
       NextPageCommand = new DelegateCommand(OnNextPageCommand);
       CancelCommand = new DelegateCommand(App.GlobalCancelCommand);
@@ -43,7 +43,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
         var result = dlg.ShowDialog();
         if (result == DialogResult.OK)
         {
-          FilePath = dlg.SelectedPath;
+         App.FileOutputPath = FilePath = dlg.SelectedPath;
         }
       }
     }

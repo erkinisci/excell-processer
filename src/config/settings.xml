@@ -8,7 +8,8 @@
 
   <settingGroup name="Application">
     <add key="FilePath" value="C:\ClientApi\" />
-    <add key="ClientApiExeFileName" value="ClientApiManager.7z" />
+    <add key="ClientApiZipFileName" value="ClientAPIMonitor.zip" />
+    <add key="ClientApiExeFileName" value="clientapimanager.exe" />
   </settingGroup>
   
 </settings>
