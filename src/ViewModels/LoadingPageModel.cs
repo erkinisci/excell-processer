@@ -79,6 +79,13 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 
     private void Bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
+      var bw = sender as BackgroundWorker;
+      bw?.Dispose();
+      bw.DoWork += Bw_DoWork;
+      bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
+
+      bw = null;
+
       IsLoading = true;
 
       Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
