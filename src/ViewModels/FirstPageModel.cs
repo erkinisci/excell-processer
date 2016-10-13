@@ -15,6 +15,8 @@ namespace Matriks.ClientAPI.Setup.ViewModels
     public DelegateCommand FilePathDialogCommand { get; set; }
     public DelegateCommand NextPageCommand { get; set; }
 
+    public DelegateCommand CancelCommand { get; set; }
+
     public override void OnLoaded(FrameworkElement view)
     {
       base.OnLoaded(view);
@@ -24,6 +26,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
       FilePath = _appSettings.GetString("FilePath");
       FilePathDialogCommand = new DelegateCommand(OnFilePathDialogCommand);
       NextPageCommand = new DelegateCommand(OnNextPageCommand);
+      CancelCommand = new DelegateCommand(App.GlobalCancelCommand);
     }
 
     private void OnNextPageCommand()

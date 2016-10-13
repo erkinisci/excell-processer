@@ -37,7 +37,7 @@
       <TextBlock Height="20" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" Text="Yükelemeye başlamak için YÜKLE yi seçin. Eğer düzeltme yapmak istiyorsanız GERİ yi seçin." VerticalAlignment="Top" FontSize="14" Foreground="{StaticResource Orange}" Width="420" Canvas.Left="10" Canvas.Top="172" />
       <TextBlock Height="20" HorizontalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap" Text="İptal etmek için İPTAL e basın." VerticalAlignment="Top" FontSize="14" Foreground="{StaticResource Orange}" Width="420" Canvas.Left="10" Canvas.Top="192" />
 
-      <ProgressBar Width="300" Canvas.Left="56" Canvas.Top="230" Height="10" IsIndeterminate="True"/>
+      <ProgressBar Width="300" Canvas.Left="56" Canvas.Top="230" Height="10" IsIndeterminate="True" Visibility="{Binding ProgressBarVisibility}"/>
     </Canvas>
 
 

@@ -12,6 +12,7 @@ using Matriks.Oms.EnterpriseLibrary.Configuration;
 using Matriks.Oms.EnterpriseLibrary.Resolvers;
 using Matriks.Wpf;
 using Matriks.Wpf.Framework;
+using Matriks.Wpf.Utilities.TaskDialog;
 
 namespace Matriks.ClientAPI.Setup
 {
@@ -25,6 +26,8 @@ namespace Matriks.ClientAPI.Setup
     public static Frame LayoutRoot { get; set; }
 
     public static ListBox MenuListBox { get; set; }
+
+    public static Window AppMainWindow { get; set; }
 
     public static void MenuListBoxSelection(int index)
     {
@@ -91,6 +94,15 @@ namespace Matriks.ClientAPI.Setup
         return;
       mainProcess.WaitForExit();
       Dispatcher.DoInvoke(Application.Current.Shutdown);
+    }
+
+    public static void GlobalCancelCommand()
+    {
+     var result = TaskDialog.ShowMessage(App.AppMainWindow,
+        App.AppMainWindow.Title + " iptal etmek isteğinizden emin misiniz ?", App.AppMainWindow.Title, TaskDialogCommonButtons.YesNo);
+
+      if(result == TaskDialogSimpleResult.Yes)
+        Application.Current.Shutdown();
     }
   }
 }

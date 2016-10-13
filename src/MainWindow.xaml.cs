@@ -30,6 +30,7 @@ namespace Matriks.ClientAPI.Setup
 
       App.LayoutRoot = LayoutRoot;
       App.MenuListBox = MenuListBox;
+      App.AppMainWindow = this;
     }
 
     private void MenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
