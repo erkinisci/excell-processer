@@ -81,7 +81,7 @@ namespace Matriks.ClientAPI.Setup.Models
           {
             foreach (var entry in archive.Entries)
             {
-              //Thread.Sleep(200);
+              Thread.Sleep(200);
               if (entry.Length > 0)
               {
                 var fileName = Path.Combine(subFolderName, entry.Name);
