@@ -56,20 +56,26 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 
     private void Bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
+      var result = e.Result as bool? ?? false;
       var bw = sender as BackgroundWorker;
+      bw.DoWork -= Bw_DoWork;
+      bw.RunWorkerCompleted -= Bw_RunWorkerCompleted;
       bw?.Dispose();
-      bw.DoWork += Bw_DoWork;
-      bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
 
-      IsLoading = true;
-
-      Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
-
+      if (!result)
+      {
+        IsLoading = false;
+        Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
+      }
+      else
+      { 
+        // error page e gonder
+      }
     }
 
     private void Bw_DoWork(object sender, DoWorkEventArgs e)
     {
-      ExeFileCreator.ExtractFilesFromEmbeddedZip();
+      e.Result = ExeFileCreator.ExtractFilesFromEmbeddedZip();
     }
 
     public bool IsApplicationStart

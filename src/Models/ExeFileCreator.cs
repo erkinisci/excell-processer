@@ -53,22 +53,24 @@ namespace Matriks.ClientAPI.Setup.Models
 
         foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup select a)
         {
-          var subFolderName = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName);
+          var subFolderName = Path.Combine(MatriksClientApiSetup.MainFolderPath);
 
-          isExist = CheckDirectory(subFolderName);
-          if (!isExist)
-            error = !CreateDirectory(subFolderName);
+          //isExist = CheckDirectory(subFolderName);
+          //if (!isExist)
+          //  error = !CreateDirectory(subFolderName);
 
-          if (error)
-          {
-            //logla 
-            break;
-          }
+          //if (error)
+          //{
+          //  //logla 
+          //  break;
+          //}
 
-          var filePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ZipName);
+          var filePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.ZipName);
           if (File.Exists(filePath))
             DeleteFiles(subFolderName);
-
+          isExist = CheckDirectory(Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName));
+          if(isExist)
+            Directory.Delete(Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName),true);
           error = !ZipToFile(appInfo, filePath);
           if (error)
           {
@@ -77,26 +79,26 @@ namespace Matriks.ClientAPI.Setup.Models
           }
 
           ZipFile.ExtractToDirectory(filePath, subFolderName);
-          using (var archive = ZipFile.OpenRead(filePath))
-          {
-            foreach (var entry in archive.Entries)
-            {
-              Thread.Sleep(200);
-              if (entry.Length > 0)
-              {
-                var fileName = Path.Combine(subFolderName, entry.Name);
-                if (File.Exists(fileName) || (entry.FullName.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase)))
-                  continue;
+          //using (var archive = ZipFile.OpenRead(filePath))
+          //{
+          //  foreach (var entry in archive.Entries)
+          //  {
+          //   // Thread.Sleep(200);
+          //    if (entry.Length > 0)
+          //    {
+          //      var fileName = Path.Combine(subFolderName, entry.Name);
+          //      if (File.Exists(fileName) || (entry.FullName.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase)))
+          //        continue;
 
-                entry.ExtractToFile(fileName);
-              }
-            }
-          }
+          //      entry.ExtractToFile(fileName);
+          //    }
+          //  }
+          //}
 
           try
           {
             File.Delete(filePath);
-            Directory.Delete(Path.Combine(subFolderName, appInfo.FolderName), true);
+            //Directory.Delete(Path.Combine(subFolderName, appInfo.FolderName), true);
           }
           catch (Exception)
           {
@@ -185,6 +187,15 @@ namespace Matriks.ClientAPI.Setup.Models
 
     public void RunApplication()
     {
+      foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup select a)
+      {
+        var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
+
+        if (appInfo.Arguments == null)
+          System.Diagnostics.Process.Start(exeFilePath);
+        else
+          System.Diagnostics.Process.Start(exeFilePath, appInfo.Arguments);
+      }
       //_finalfilePath = Path.Combine(_destinationFolder, _clientApiExeFileName);
       //var result = System.Diagnostics.Process.Start(_finalfilePath);
     }
