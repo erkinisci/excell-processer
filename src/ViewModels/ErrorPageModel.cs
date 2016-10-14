@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using Matriks.ClientAPI.Setup.Models;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
@@ -21,7 +22,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 
     private void OnOpenErrorFileCommand()
     {
-      
+      Process.Start("notepad.exe", SetupLogger.GetLogFilePath());
     }
   }
 }

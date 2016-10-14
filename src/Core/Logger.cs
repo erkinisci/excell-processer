@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NLog;
+using NLog.Targets;
 
 namespace Matriks.ClientAPI.Setup.Core
 {
@@ -24,6 +21,14 @@ namespace Matriks.ClientAPI.Setup.Core
     public void WriteInfoLog(string message)
     {
       _setupLogger.Log(LogLevel.Error, message);
+    }
+
+    public string GetLogFilePath()
+    {
+      var fileTarget = (FileTarget)LogManager.Configuration.AllTargets[1];
+      var logEventInfo = new LogEventInfo { TimeStamp = DateTime.Now };
+      var fileName = fileTarget.FileName.Render(logEventInfo);
+      return fileName;
     }
   }
 }

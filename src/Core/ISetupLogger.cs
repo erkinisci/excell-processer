@@ -5,5 +5,7 @@
     void WriteInfoLog(string message);
 
     void WriteErrorLog(string message);
+
+    string GetLogFilePath();
   }
 }
