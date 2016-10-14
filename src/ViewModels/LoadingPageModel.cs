@@ -65,7 +65,9 @@ namespace Matriks.ClientAPI.Setup.ViewModels
       IsLoading = false;
       if (!result)
       {
-       
+        ExeFileCreator.UninstallServices();
+        ExeFileCreator.RunServices();
+
         Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
       }
       else

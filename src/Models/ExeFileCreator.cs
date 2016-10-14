@@ -188,19 +188,37 @@ namespace Matriks.ClientAPI.Setup.Models
 
     public void RunApplication()
     {
-      Process process = new Process();
-      foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup select a)
+      foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup && !a.IsWindowsService select a)
+      {
+        var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
+        var result = appInfo.Arguments != null ? Process.Start(exeFilePath, appInfo.Arguments) : Process.Start(exeFilePath);
+      }
+    }
+
+    public void RunServices()
+    {
+      foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup && a.IsWindowsService select a)
       {
         var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
 
+        var result = appInfo.Arguments != null ? Process.Start(exeFilePath, appInfo.Arguments) : Process.Start(exeFilePath);
 
-        process.StartInfo.FileName = exeFilePath;
-        if (appInfo.Arguments != null)
-          process.StartInfo.Arguments = appInfo.Arguments;
-        process.Start();
+        if (appInfo.IsWindowsService)
+          result?.WaitForExit();
       }
-      //_finalfilePath = Path.Combine(_destinationFolder, _clientApiExeFileName);
-      //var result = System.Diagnostics.Process.Start(_finalfilePath);
+    }
+
+    public void UninstallServices()
+    {
+      foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup && a.IsWindowsService select a)
+      {
+        var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
+
+        var result = Process.Start(exeFilePath, " uninstall");
+
+        if (appInfo.IsWindowsService)
+          result?.WaitForExit();
+      }
     }
 
     public static void CopyStream(Stream input, Stream output)

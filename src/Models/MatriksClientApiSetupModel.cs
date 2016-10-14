@@ -21,9 +21,9 @@ namespace Matriks.ClientAPI.Setup.Models
     {
       Apps = new List<AppInfo>()
       {
-          new AppInfo() { ZipName = "ClientAPIServer.zip", ExeName = "clientserver.exe", FolderName = "ClientAPI Server", Args = new []{ "install", "nomessage"}, IsWindowsService = true, IsSetup = true}
-          , new AppInfo() { ZipName = "ClientAPIPriceUpdater.zip", ExeName = "priceUpdater.exe", FolderName = "ClientAPI Price Updater", Args = new []{ "install", "nomessage"}, IsWindowsService = true, IsSetup = true}
-          , new AppInfo() { ZipName = "ClientAPIPriceServer.zip", ExeName = "priceServer.exe", FolderName = "ClientAPI Price Server", Args = new []{ "install", "nomessage"}, IsWindowsService = true, IsSetup = true}
+          new AppInfo() { ZipName = "ClientAPIServer.zip", ExeName = "clientserver.exe", FolderName = "ClientAPI Server", Args = new []{ "/install"}, IsWindowsService = true, IsSetup = true}
+          , new AppInfo() { ZipName = "ClientAPIPriceUpdater.zip", ExeName = "priceUpdater.exe", FolderName = "ClientAPI Price Updater", Args = new []{ "/install"}, IsWindowsService = true, IsSetup = true}
+          , new AppInfo() { ZipName = "ClientAPIPriceServer.zip", ExeName = "priceServer.exe", FolderName = "ClientAPI Price Server", Args = new []{ "/install"}, IsWindowsService = true, IsSetup = true}
           ,new AppInfo() { ZipName = "ClientAPIMonitor.zip", ExeName = "clientapimanager.exe", FolderName = "ClientAPI Monitor", IsWindowsService = false, IsSetup = true}
       };
     }
