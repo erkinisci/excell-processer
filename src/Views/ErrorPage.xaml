@@ -44,8 +44,8 @@
         <ColumnDefinition/>
       </Grid.ColumnDefinitions>
       <Button Width="100" Grid.Column="0" Height="24" Content="Geri" IsEnabled="False" HorizontalAlignment="Right" Margin="5"  Style="{StaticResource TransparentButton}"/>
-      <Button Width="100" Grid.Column="1" Height="24" Content="Son" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}" Command="{Binding LastCommand}"/>
-      <Button Width="100" Grid.Column="2" Height="24" Content="İptal"  IsEnabled="False" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}"/>
+      <Button Width="100" Grid.Column="1" Height="24" Content="Log Aç" HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}" Command="{Binding OpenErrorFileCommand}"/>
+      <Button Width="100" Grid.Column="2" Height="24" Content="Kapat"  HorizontalAlignment="Left"  Style="{StaticResource TransparentButton}" Command="{Binding CloseCommand}"/>
 
 
     </Grid>

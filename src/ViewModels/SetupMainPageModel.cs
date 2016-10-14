@@ -15,6 +15,9 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 
     public DelegateCommand CancelCommand { get; set; }
 
+    public new DelegateCommand CloseCommand { get; set; }
+
+    
     public override void OnLoaded(FrameworkElement view)
     {
       base.OnLoaded(view);
@@ -24,6 +27,12 @@ namespace Matriks.ClientAPI.Setup.ViewModels
       ReturnCommand = new DelegateCommand(OnReturnCommand);
       NextPageCommand = new DelegateCommand(OnNextPageCommand);
       CancelCommand = new DelegateCommand(App.GlobalCancelCommand);
+      CloseCommand = new DelegateCommand(OnCloseCommand);
+    }
+
+    private void OnCloseCommand()
+    {
+      Application.Current.Shutdown();
     }
 
     public virtual void OnNextPageCommand()
