@@ -152,10 +152,10 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="ExeFiles\ClientAPI Server.zip" />
-    <EmbeddedResource Include="ExeFiles\ClientAPIMonitor.zip" />
+    <EmbeddedResource Include="ExeFiles\ClientAPIServer.zip" />
     <EmbeddedResource Include="ExeFiles\ClientAPIPriceServer.zip" />
     <EmbeddedResource Include="ExeFiles\ClientAPIPriceUpdater.zip" />
+    <EmbeddedResource Include="ExeFiles\ClientAPIMonitor.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

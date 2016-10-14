@@ -91,7 +91,38 @@
           <TextBlock Text="Bilgi Toplanıyor" VerticalAlignment="Center" FontSize="14" />
         </StackPanel>
       </ListBoxItem>
-      <ListBoxItem>
+        <ListBoxItem>
+          <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
+            <Canvas Margin="5,5,5,0" Width="25">
+              <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf0ed;" FontSize="23" VerticalAlignment="Center">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+              <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf002;" Canvas.Top="5" Canvas.Left="5" FontSize="10" VerticalAlignment="Center">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+            </Canvas>
+            <TextBlock Text="Yüklenecek Uygulamalar" VerticalAlignment="Center" FontSize="14" />
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem>
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
           <Canvas Margin="5,5,5,0" Width="25">
             <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf019;" FontSize="18" VerticalAlignment="Center">

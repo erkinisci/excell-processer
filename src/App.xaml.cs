@@ -30,8 +30,6 @@ namespace Matriks.ClientAPI.Setup
 
     public static Window AppMainWindow { get; set; }
 
-    public static string FileOutputPath { get; set; }
-
     public static void MenuListBoxSelection(int index)
     {
       if (index < 0 && MenuListBox.SelectedIndex > -1)

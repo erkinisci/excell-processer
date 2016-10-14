@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
 using Matriks.Oms.EnterpriseLibrary.Configuration;
@@ -13,55 +15,76 @@ namespace Matriks.ClientAPI.Setup.Models
 {
   public class ExeFileCreator
   {
-    public const string ResourceString = "Matriks.ClientAPI.Setup.ExeFiles.";
-
-    private string _zipfileName;
-    private string _destinationFolder;
-    private string _clientApiExeFileName;
-
-    private string _finalfilePath;
+    public const string ResourceString = "Matriks.ClientAPI.Setup.ExeFiles";
+    public MatriksClientApiSetupModel MatriksClientApiSetup { get; set; }
 
     public ExeFileCreator()
     {
-      _destinationFolder = App.FileOutputPath;
+      MatriksClientApiSetup =
+        DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
     }
 
-    public void ExtractFilesFromEmbeddedZip()
+    private Stream GetFileStream(string zipName)
     {
+      return Assembly.GetEntryAssembly().GetManifestResourceStream($"{ResourceString}.{zipName}");
+    }
+
+    public bool ExtractFilesFromEmbeddedZip()
+    {
+      var error = false;
       try
       {
-        Stream zipStream = Assembly.GetEntryAssembly().GetManifestResourceStream("Matriks.ClientAPI.Setup.ExeFiles." + _zipfileName);
+        bool isExist = CheckDirectory(MatriksClientApiSetup.MainFolderPath);
+        if (!isExist)
+          error = !CreateDirectory(MatriksClientApiSetup.MainFolderPath);
 
-        if (!Directory.Exists(_destinationFolder))
+        if (error)
         {
-          Directory.CreateDirectory(_destinationFolder);
-        }
-        else
-        {
-          Directory.Delete(_destinationFolder);
-        //  var filePaths = Directory.GetFiles(_destinationFolder);
-        //  foreach (var filePath in filePaths)
-        //    File.Delete(filePath);
+          // logla
+          return error;
         }
 
-        if (zipStream != null)
+        error = !CleanFiles();
+        if (error)
         {
-          _finalfilePath = Path.Combine(_destinationFolder, _zipfileName);
-          using (Stream outStream = File.Create(_finalfilePath))
+          // logla
+          return error;
+        }
+
+        foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup select a)
+        {
+          var subFolderName = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName);
+
+          isExist = CheckDirectory(subFolderName);
+          if (!isExist)
+            error = !CreateDirectory(subFolderName);
+
+          if (error)
           {
-            CopyStream(zipStream, outStream);
+            //logla 
+            break;
           }
 
-          ZipFile.ExtractToDirectory(_finalfilePath, _destinationFolder);
+          var filePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ZipName);
+          if (File.Exists(filePath))
+            DeleteFiles(subFolderName);
 
-          using (var archive = ZipFile.OpenRead(_finalfilePath))
+          error = !ZipToFile(appInfo, filePath);
+          if (error)
+          {
+            //logla 
+            break;
+          }
+
+          ZipFile.ExtractToDirectory(filePath, subFolderName);
+          using (var archive = ZipFile.OpenRead(filePath))
           {
             foreach (var entry in archive.Entries)
             {
-              Thread.Sleep(200);
+              //Thread.Sleep(200);
               if (entry.Length > 0)
               {
-                var fileName = Path.Combine(_destinationFolder, entry.Name);
+                var fileName = Path.Combine(subFolderName, entry.Name);
                 if (File.Exists(fileName) || (entry.FullName.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase)))
                   continue;
 
@@ -70,19 +93,100 @@ namespace Matriks.ClientAPI.Setup.Models
             }
           }
 
-          File.Delete(Path.Combine(_destinationFolder, _zipfileName));
+          try
+          {
+            File.Delete(filePath);
+            Directory.Delete(Path.Combine(subFolderName, appInfo.FolderName), true);
+          }
+          catch (Exception)
+          {
+            // logla
+            error = false;
+          }
         }
       }
-      catch (Exception exception)
+      catch (Exception ex)
       {
-
+        // logla
+        error = false;
       }
+
+      return error;
+    }
+
+    private bool ZipToFile(AppInfo appInfo, string filePath)
+    {
+      var zipStream = GetFileStream(appInfo.ZipName);
+      if (zipStream == null)
+        return false;
+
+      using (Stream outStream = File.Create(filePath))
+      {
+        try
+        {
+          CopyStream(zipStream, outStream);
+        }
+        catch (Exception)
+        {
+          // logla
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    private bool CleanFiles()
+    {
+      try
+      {
+        foreach (var appInfo in MatriksClientApiSetup.Apps)
+        {
+          var subFolderPath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName);
+          if (!CheckDirectory(subFolderPath)) continue;
+
+          DeleteFiles(subFolderPath);
+        }
+
+        return true;
+      }
+      catch (Exception)
+      {
+        //logla
+        return false;
+      }
+    }
+
+    private static void DeleteFiles(string subFolderPath)
+    {
+      var files = Directory.GetFiles(subFolderPath);
+      foreach (var filePath in files)
+        File.Delete(filePath);
+    }
+
+    private bool CreateDirectory(string directoryName)
+    {
+      try
+      {
+        Directory.CreateDirectory(directoryName);
+        return true;
+      }
+      catch (Exception ex)
+      {
+        // logla          
+        return false;
+      }
+    }
+
+    private bool CheckDirectory(string directoryName)
+    {
+      return Directory.Exists(directoryName);
     }
 
     public void RunApplication()
     {
-      _finalfilePath = Path.Combine(_destinationFolder, _clientApiExeFileName);
-      var result = System.Diagnostics.Process.Start(_finalfilePath);
+      //_finalfilePath = Path.Combine(_destinationFolder, _clientApiExeFileName);
+      //var result = System.Diagnostics.Process.Start(_finalfilePath);
     }
 
     public static void CopyStream(Stream input, Stream output)
