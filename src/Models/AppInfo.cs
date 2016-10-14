@@ -8,5 +8,7 @@
     public string[] Args { get; set; }
     public bool IsWindowsService { get; set; }
     public bool RunAuto { get; set; }
+
+    public bool IsSetup { get; set; }
   }
 }

@@ -23,6 +23,7 @@ namespace Matriks.ClientAPI.Setup
 
       AddMenu("collecting", "views.firstpage");
       AddMenu("FirstPage", "views.firstpage");
+      AddMenu("ApplicationChoosePage", "views.applicationchoosepage");     
       AddMenu("LoadingPage", "views.loadingpage");
       AddMenu("ComplatedPage", "views.complatedpage");
 

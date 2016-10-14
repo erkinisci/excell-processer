@@ -17,7 +17,7 @@
   <!--<SolidColorBrush x:Key="WindowButtonPressedColor" Color="#3975D8" />-->
   <SolidColorBrush x:Key="WindowButtonPressedColor" Color="#2b3643" />
 
-
+  <SolidColorBrush x:Key="GreenComplatedSee" Color="#26C281"/>
 
   <SolidColorBrush x:Key="Turquoise" Color="#1abc9c" />
   <SolidColorBrush x:Key="Greensea" Color="#16a085" />

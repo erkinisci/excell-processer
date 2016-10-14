@@ -1,31 +1,17 @@
-﻿using System;
-using System.ComponentModel;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Forms.VisualStyles;
 using System.Windows.Threading;
 using Matriks.ClientAPI.Setup.Models;
-using Matriks.Oms.EnterpriseLibrary;
-using Matriks.Oms.EnterpriseLibrary.Common;
-using Matriks.Oms.EnterpriseLibrary.Configuration;
-using Matriks.Wpf;
 using Matriks.Wpf.Framework;
 using Matriks.Wpf.Framework.Commands;
 
 namespace Matriks.ClientAPI.Setup.ViewModels
 {
-  public class LoadingPageModel : NavigateObject
+  public class LoadingPageModel : SetupMainPageModel
   {
-    private IAppSettings _appSettings;
     public DelegateCommand LoadCommand { get; set; }
 
-    public DelegateCommand ReturnCommand { get; set; }
-
-    public DelegateCommand CancelCommand { get; set; }
-
     public DelegateCommand LastCommand { get; set; }
-
 
     public bool IsLoading { get; private set; }
 
@@ -35,18 +21,14 @@ namespace Matriks.ClientAPI.Setup.ViewModels
     {
       base.OnLoaded(view);
 
-      _appSettings = DependencyContainer.Resolver.GetService<IAppSettings>("UISettings");
       ProgressBarVisibility = Visibility.Collapsed;
 
       LoadCommand = new DelegateCommand(OnLoadCommand);
-      ReturnCommand = new DelegateCommand(OnReturnCommand);
-      CancelCommand = new DelegateCommand(App.GlobalCancelCommand);
       LastCommand = new DelegateCommand(OnLastCommand);
+
       ExeFileCreator = new ExeFileCreator();
 
       IsLoading = false;
-
-     
     }
     
     private void OnLastCommand()
@@ -55,11 +37,6 @@ namespace Matriks.ClientAPI.Setup.ViewModels
         ExeFileCreator.RunApplication();
 
       Application.Current.Shutdown();
-    }
-
-    private void OnReturnCommand()
-    {
-      App.MenuListBoxSelection(-1);
     }
 
     private void OnLoadCommand()
@@ -84,8 +61,6 @@ namespace Matriks.ClientAPI.Setup.ViewModels
       bw.DoWork += Bw_DoWork;
       bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
 
-      bw = null;
-
       IsLoading = true;
 
       Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
@@ -105,7 +80,6 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 
     // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty IsApplicationStartProperty = DependencyProperty.Register("IsApplicationStart", typeof(bool), typeof(LoadingPageModel));
-
 
     public Visibility ProgressBarVisibility
     {

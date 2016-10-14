@@ -84,8 +84,10 @@
     <Compile Include="Bootstrapter.cs" />
     <Compile Include="Models\MatriksClientApiSetupModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\ApplicationChoosePageModel.cs" />
     <Compile Include="ViewModels\LoadingPageModel.cs" />
     <Compile Include="ViewModels\FirstPageModel.cs" />
+    <Compile Include="ViewModels\SetupMainPageModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ComplatedPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ApplicationChoosePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
