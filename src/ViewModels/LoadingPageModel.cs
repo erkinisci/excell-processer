@@ -62,14 +62,15 @@ namespace Matriks.ClientAPI.Setup.ViewModels
       bw.RunWorkerCompleted -= Bw_RunWorkerCompleted;
       bw?.Dispose();
 
+      IsLoading = false;
       if (!result)
       {
-        IsLoading = false;
+       
         Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
       }
       else
-      { 
-        // error page e gonder
+      {
+        Dispatcher.DoInvoke(() => { App.Navigate("/views/errorpage.xaml"); }, DispatcherPriority.Send);
       }
     }
 

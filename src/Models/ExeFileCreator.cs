@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -69,8 +70,8 @@ namespace Matriks.ClientAPI.Setup.Models
           if (File.Exists(filePath))
             DeleteFiles(subFolderName);
           isExist = CheckDirectory(Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName));
-          if(isExist)
-            Directory.Delete(Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName),true);
+          if (isExist)
+            Directory.Delete(Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName), true);
           error = !ZipToFile(appInfo, filePath);
           if (error)
           {
@@ -187,14 +188,16 @@ namespace Matriks.ClientAPI.Setup.Models
 
     public void RunApplication()
     {
+      Process process = new Process();
       foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup select a)
       {
         var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
 
-        if (appInfo.Arguments == null)
-          System.Diagnostics.Process.Start(exeFilePath);
-        else
-          System.Diagnostics.Process.Start(exeFilePath, appInfo.Arguments);
+
+        process.StartInfo.FileName = exeFilePath;
+        if (appInfo.Arguments != null)
+          process.StartInfo.Arguments = appInfo.Arguments;
+        process.Start();
       }
       //_finalfilePath = Path.Combine(_destinationFolder, _clientApiExeFileName);
       //var result = System.Diagnostics.Process.Start(_finalfilePath);

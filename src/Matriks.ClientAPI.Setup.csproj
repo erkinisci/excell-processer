@@ -85,6 +85,7 @@
     <Compile Include="Models\MatriksClientApiSetupModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ApplicationChoosePageModel.cs" />
+    <Compile Include="ViewModels\ErrorPageModel.cs" />
     <Compile Include="ViewModels\LoadingPageModel.cs" />
     <Compile Include="ViewModels\FirstPageModel.cs" />
     <Compile Include="ViewModels\SetupMainPageModel.cs" />
@@ -110,6 +111,10 @@
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ErrorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ComplatedPage.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -26,6 +26,7 @@ namespace Matriks.ClientAPI.Setup
       AddMenu("ApplicationChoosePage", "views.applicationchoosepage");     
       AddMenu("LoadingPage", "views.loadingpage");
       AddMenu("ComplatedPage", "views.complatedpage");
+      AddMenu("ErrorPage", "views.errorpage");
 
       MenuListBox.SelectionChanged += MenuListBox_SelectionChanged;
 
