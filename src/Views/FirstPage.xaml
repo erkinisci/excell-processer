@@ -42,7 +42,7 @@
           </TextBlock>
         </Label.Content>
       </Label>
-      <TextBox Height="25" Width="300" Canvas.Left="56" Canvas.Top="210" Text="{Binding FilePath}"/>
+      <TextBox Height="25" Width="300" Canvas.Left="56" Canvas.Top="210" Text="{Binding MatriksClientApiSetup.MainFolderPath}"/>
       <Button Width="75" Height="24" Canvas.Left="356" Canvas.Top="210" Content="Gözat..." Style="{StaticResource TransparentButton}" Command="{Binding FilePathDialogCommand}"/>
     </Canvas>
 

@@ -78,9 +78,12 @@
     <Compile Include="Core\Windows\NativeMethods.cs" />
     <Compile Include="Core\Windows\WindowCloseCommand.cs" />
     <Compile Include="Core\Windows\WindowFeatures.cs" />
+    <Compile Include="Models\AppInfo.cs" />
     <Compile Include="Models\ExeFileCreator.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Bootstrapter.cs" />
+    <Compile Include="Models\MatriksClientApiSetupModel.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\LoadingPageModel.cs" />
     <Compile Include="ViewModels\FirstPageModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -143,7 +146,10 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="ExeFiles\ClientAPI Server.zip" />
     <EmbeddedResource Include="ExeFiles\ClientAPIMonitor.zip" />
+    <EmbeddedResource Include="ExeFiles\ClientAPIPriceServer.zip" />
+    <EmbeddedResource Include="ExeFiles\ClientAPIPriceUpdater.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

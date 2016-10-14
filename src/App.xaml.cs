@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using Matriks.ClientAPI.Setup.Core;
+using Matriks.ClientAPI.Setup.Models;
 using Matriks.Oms.EnterpriseLibrary.Common;
 using Matriks.Oms.EnterpriseLibrary.Configuration;
 using Matriks.Oms.EnterpriseLibrary.Resolvers;
@@ -56,6 +57,7 @@ namespace Matriks.ClientAPI.Setup
       module.Initialize();
 
       DependencyContainer.AddResolver(new SingletonDependencyResolver<IAppSettings>(new UIAppSettings(), "UISettings"));
+      DependencyContainer.AddResolver(new SingletonDependencyResolver<MatriksClientApiSetupModel>(new MatriksClientApiSetupModel(), "MatriksClientApiSetupModel"));
 
       var mainWindow = new MainWindow();
       Current.MainWindow = mainWindow;

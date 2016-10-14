@@ -13,7 +13,8 @@ namespace Matriks.ClientAPI.Setup.Models
 {
   public class ExeFileCreator
   {
-    private static IAppSettings _appSettings;
+    public const string ResourceString = "Matriks.ClientAPI.Setup.ExeFiles.";
+
     private string _zipfileName;
     private string _destinationFolder;
     private string _clientApiExeFileName;
@@ -22,10 +23,6 @@ namespace Matriks.ClientAPI.Setup.Models
 
     public ExeFileCreator()
     {
-      _appSettings = DependencyContainer.Resolver.GetService<IAppSettings>("UISettings");
-      _zipfileName = _appSettings.GetString("ClientApiZipFileName");
-
-      _clientApiExeFileName = _appSettings.GetString("ClientApiExeFileName");
       _destinationFolder = App.FileOutputPath;
     }
 
