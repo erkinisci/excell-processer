@@ -65,8 +65,10 @@ namespace Matriks.ClientAPI.Setup.ViewModels
       IsLoading = false;
       if (!result)
       {
+        SetupLogger.WriteInfoLog("Servislerin calisma durumu kontrol ediliyor...");
         ExeFileCreator.UninstallServices();
         ExeFileCreator.RunServices();
+        SetupLogger.WriteInfoLog("Servislerin calisma durumu kontrolu tamamlandi.");
 
         Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
       }

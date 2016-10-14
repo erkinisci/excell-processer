@@ -4,13 +4,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Forms;
+using Matriks.ClientAPI.Setup.Core;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
-using Matriks.Oms.EnterpriseLibrary.Configuration;
 
 namespace Matriks.ClientAPI.Setup.Models
 {
@@ -19,10 +15,13 @@ namespace Matriks.ClientAPI.Setup.Models
     public const string ResourceString = "Matriks.ClientAPI.Setup.ExeFiles";
     public MatriksClientApiSetupModel MatriksClientApiSetup { get; set; }
 
+    public ISetupLogger SetupLogger { get; set; }
+
+
     public ExeFileCreator()
     {
-      MatriksClientApiSetup =
-        DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
+      MatriksClientApiSetup = DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
+      SetupLogger = DependencyContainer.Resolver.GetService<ISetupLogger>("SetupLogger");
     }
 
     private Stream GetFileStream(string zipName)
@@ -32,23 +31,36 @@ namespace Matriks.ClientAPI.Setup.Models
 
     public bool ExtractFilesFromEmbeddedZip()
     {
+      SetupLogger.WriteInfoLog("Zip extract islemlerine baslaniyor.");
+
       var error = false;
       try
       {
-        bool isExist = CheckDirectory(MatriksClientApiSetup.MainFolderPath);
+        SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasor konumu kontrol ediliyor.");
+
+        var isExist = CheckDirectory(MatriksClientApiSetup.MainFolderPath);
         if (!isExist)
+        {
+          SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasor bulunamadi. Olusturuluyor...");
+
           error = !CreateDirectory(MatriksClientApiSetup.MainFolderPath);
+        }
 
         if (error)
         {
-          // logla
+          SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasoru olusturulamadi.");
           return error;
         }
+        else
+        {
+          SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasor bulunamadi. Olusturuldu.");
+        }
 
+        UninstallServices();
         error = !CleanFiles();
         if (error)
         {
-          // logla
+          SetupLogger.WriteErrorLog("Yukleme islemi iptal edildi!");
           return error;
         }
 
@@ -75,7 +87,7 @@ namespace Matriks.ClientAPI.Setup.Models
           error = !ZipToFile(appInfo, filePath);
           if (error)
           {
-            //logla 
+            SetupLogger.WriteInfoLog(appInfo.ZipName + " isimli zip dosyasi extract islemi esnasinda hata olustu. Yukleme Iptal ediliyor..");
             break;
           }
 
@@ -103,6 +115,8 @@ namespace Matriks.ClientAPI.Setup.Models
           }
           catch (Exception)
           {
+            SetupLogger.WriteErrorLog(filePath + " dosyasi silme hatasi. Yukleme duzgun calismayabilir.");
+
             // logla
             error = false;
           }
@@ -110,7 +124,8 @@ namespace Matriks.ClientAPI.Setup.Models
       }
       catch (Exception ex)
       {
-        // logla
+        SetupLogger.WriteErrorLog("Yukeleme tamamlanamadi. Hata:" + ex.StackTrace);
+
         error = false;
       }
 
@@ -146,16 +161,19 @@ namespace Matriks.ClientAPI.Setup.Models
         foreach (var appInfo in MatriksClientApiSetup.Apps)
         {
           var subFolderPath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName);
+
+          SetupLogger.WriteInfoLog(subFolderPath + " klasoru konumu kontrol ediliyor...");
           if (!CheckDirectory(subFolderPath)) continue;
 
           DeleteFiles(subFolderPath);
+          SetupLogger.WriteInfoLog(subFolderPath + " klasor icerikleri siliniyor...");
         }
 
         return true;
       }
-      catch (Exception)
+      catch (Exception ex)
       {
-        //logla
+        SetupLogger.WriteErrorLog("ExeFileCreator icerisinde CleanFiles islemleri sirasinda hata olustu! hata:" + ex.StackTrace);
         return false;
       }
     }
@@ -192,6 +210,9 @@ namespace Matriks.ClientAPI.Setup.Models
       {
         var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
         var result = appInfo.Arguments != null ? Process.Start(exeFilePath, appInfo.Arguments) : Process.Start(exeFilePath);
+
+        SetupLogger.WriteInfoLog(appInfo.ExeName + " uygulamasi baslatildi.");
+
       }
     }
 
@@ -205,6 +226,8 @@ namespace Matriks.ClientAPI.Setup.Models
 
         if (appInfo.IsWindowsService)
           result?.WaitForExit();
+
+        SetupLogger.WriteInfoLog(appInfo.ExeName + " servisi install edildi.");
       }
     }
 
@@ -218,6 +241,8 @@ namespace Matriks.ClientAPI.Setup.Models
 
         if (appInfo.IsWindowsService)
           result?.WaitForExit();
+
+        SetupLogger.WriteInfoLog(appInfo.ExeName + " servisi uninstall edildi.");
       }
     }
 

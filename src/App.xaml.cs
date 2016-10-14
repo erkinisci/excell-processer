@@ -56,6 +56,7 @@ namespace Matriks.ClientAPI.Setup
 
       DependencyContainer.AddResolver(new SingletonDependencyResolver<IAppSettings>(new UIAppSettings(), "UISettings"));
       DependencyContainer.AddResolver(new SingletonDependencyResolver<MatriksClientApiSetupModel>(new MatriksClientApiSetupModel(), "MatriksClientApiSetupModel"));
+      DependencyContainer.AddResolver(new SingletonDependencyResolver<ISetupLogger>(new SetupLogger(), "SetupLogger"));
 
       var mainWindow = new MainWindow();
       Current.MainWindow = mainWindow;

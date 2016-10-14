@@ -1,4 +1,5 @@
 using System.Windows;
+using Matriks.ClientAPI.Setup.Core;
 using Matriks.ClientAPI.Setup.Models;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
@@ -9,6 +10,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 {
   public class SetupMainPageModel : NavigateObject
   {
+    public ISetupLogger SetupLogger { get; set; }
     public DelegateCommand ReturnCommand { get; set; }
 
     public DelegateCommand NextPageCommand { get; set; }
@@ -23,6 +25,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
       base.OnLoaded(view);
 
       MatriksClientApiSetup = DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
+      SetupLogger = DependencyContainer.Resolver.GetService<ISetupLogger>("SetupLogger");
 
       ReturnCommand = new DelegateCommand(OnReturnCommand);
       NextPageCommand = new DelegateCommand(OnNextPageCommand);
