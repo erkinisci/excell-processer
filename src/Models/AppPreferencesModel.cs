@@ -54,6 +54,10 @@ namespace Matriks.ClientAPI.Setup.Models
           Marshal.FinalReleaseComObject(lnk);
         }
       }
+      catch (Exception ex)
+      {
+        SetupLogger.WriteErrorLog("Windows Script Host Shell Object reflection islemlerinde hata olustu. Kisa yol hazirlanamadi. Hata:" + ex.StackTrace);
+      }
       finally
       {
         Marshal.FinalReleaseComObject(shell);
