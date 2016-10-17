@@ -30,7 +30,13 @@ namespace Matriks.ClientAPI.Setup.ViewModels
 
       IsLoading = false;
     }
-    
+
+    public override void OnReturnCommand()
+    {
+      if (!IsLoading)
+        base.OnReturnCommand();
+    }
+
     private void OnLastCommand()
     {
       if (IsApplicationStart)

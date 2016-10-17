@@ -25,7 +25,7 @@ namespace Matriks.ClientAPI.Setup.Models
           new AppInfo() { ZipName = "ClientAPI Server.zip", ExeName = "clientserver.exe", ServiceName = "ClientApiService", FolderName = "ClientAPI Server", Args = new []{ "/install /nomsg"}, IsWindowsService = true, IsSetup = true}
           , new AppInfo() { ZipName = "ClientAPI PriceUpdater.zip", ExeName = "priceUpdater.exe", ServiceName  = "PriceDbUpdater",FolderName = "ClientAPI PriceUpdater", Args = new []{ "/install /nomsg"}, IsWindowsService = true, IsSetup = true}
           , new AppInfo() { ZipName = "ClientAPI PriceServer.zip", ExeName = "priceServer.exe", ServiceName = "PriceApiServer", FolderName = "ClientAPI PriceServer", Args = new []{ "/install /nomsg"}, IsWindowsService = true, IsSetup = true}
-          ,new AppInfo() { ZipName = "ClientAPI Monitor.zip", ShotCutName = "ClientAPI Monitor" ,ExeName = "clientapimanager.exe", FolderName = "ClientAPI Monitor", IsWindowsService = false, IsSetup = true}
+          ,new AppInfo() { ZipName = "ClientAPI Monitor.zip", ShortCutName = "ClientAPI Monitor" ,ExeName = "clientapimanager.exe", FolderName = "ClientAPI Monitor", IsWindowsService = false, IsSetup = true}
       };
     }
 

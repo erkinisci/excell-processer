@@ -7,7 +7,7 @@ namespace Matriks.ClientAPI.Setup.Models
     public string ExeName { get; set; }
     public string ZipName { get; set; }
     public string FolderName { get; set; }
-    public string ShotCutName { get; set; }
+    public string ShortCutName { get; set; }
     public string ServiceName { get; set; }
     public string[] Args { get; set; }
     public bool IsWindowsService { get; set; }
