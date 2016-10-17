@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\manager.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
     <StartupObject>Matriks.ClientAPI.Setup.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
@@ -190,9 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\manager.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\managerw.ico" />
