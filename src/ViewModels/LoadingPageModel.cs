@@ -65,6 +65,7 @@ namespace Matriks.ClientAPI.Setup.ViewModels
       IsLoading = false;
       if (!result)
       {
+        AppPreferencesModel.CreateShortcut();
         SetupLogger.WriteInfoLog("Servislerin calisma durumu kontrol ediliyor...");
         ExeFileCreator.UninstallServices();
         ExeFileCreator.RunServices();

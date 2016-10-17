@@ -293,7 +293,7 @@
   <Style TargetType="{x:Type Button}" x:Key="TransparentButton">
     <Setter Property="Height" Value="33" />
     <Setter Property="Width" Value="34" />
-    <Setter Property="Background" Value="#95A5A6" />
+    <Setter Property="Background" Value="{StaticResource MetronicWetasphalt}" />
     <Setter Property="Foreground" Value="#FF9d9d9c" />
     <Setter Property="Template">
       <Setter.Value>

@@ -16,12 +16,12 @@
 
 
     <Canvas Grid.Row="1">
-      <Grid Name="BackgroundGrid" Width="48" Height="48" Visibility="Visible" Canvas.Left="199" Canvas.Top="81">
+      <Grid Name="BackgroundGrid" Width="60" Height="60" Visibility="Visible" Canvas.Left="190" Canvas.Top="73">
         <Path Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z" Stretch="Fill" Fill="{StaticResource GreenComplatedSee}" Name="Stroke" Visibility="Visible" Margin="-1,0,1,0" />
       </Grid>
 
 
-      <Path Stretch="Uniform" Fill="{StaticResource GreenComplatedSee}" Width="32" Height="32" Canvas.Left="205.6" Canvas.Top="88.2"  RenderTransformOrigin="0.5,0.5">
+      <Path Stretch="Uniform" Fill="{StaticResource GreenComplatedSee}" Width="32" Height="32" Canvas.Left="203" Canvas.Top="85"  RenderTransformOrigin="0.5,0.5">
         <Path.Data>
           <PathGeometry FillRule="Nonzero" Figures="M32.0625,42.772705078125L25.78125,56.225830078125 10.453125,86.085205078125 32.8125,86.085205078125 32.8125,57.350830078125 32.82421875,55.3674354553223 32.859375,52.2766151428223 32.91796875,48.0783729553223 33,42.772705078125 32.0625,42.772705078125z M29.953125,37.850830078125L38.296875,37.850830078125 38.296875,86.085205078125 48.46875,86.085205078125 48.46875,91.053955078125 38.296875,91.053955078125 38.296875,107.553955078125 32.8125,107.553955078125 32.8125,91.053955078125 4.59375047683716,91.053955078125 4.59375047683716,86.366455078125 29.953125,37.850830078125z" />
         </Path.Data>

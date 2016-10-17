@@ -4,9 +4,11 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.ServiceProcess;
 using Matriks.ClientAPI.Setup.Core;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
+using Matriks.Oms.EnterpriseLibrary.Windows;
 
 namespace Matriks.ClientAPI.Setup.Models
 {
@@ -20,7 +22,8 @@ namespace Matriks.ClientAPI.Setup.Models
 
     public ExeFileCreator()
     {
-      MatriksClientApiSetup = DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
+      MatriksClientApiSetup =
+        DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
       SetupLogger = DependencyContainer.Resolver.GetService<ISetupLogger>("SetupLogger");
     }
 
@@ -51,10 +54,7 @@ namespace Matriks.ClientAPI.Setup.Models
           SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasoru olusturulamadi.");
           return error;
         }
-        else
-        {
-          SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasor bulunamadi. Olusturuldu.");
-        }
+        SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasor bulunamadi. Olusturuldu.");
 
         UninstallServices();
         error = !CleanFiles();
@@ -64,19 +64,9 @@ namespace Matriks.ClientAPI.Setup.Models
           return error;
         }
 
-        foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup select a)
+        foreach (var appInfo in from a in MatriksClientApiSetupModel.Apps where a.IsSetup select a)
         {
           var subFolderName = Path.Combine(MatriksClientApiSetup.MainFolderPath);
-
-          //isExist = CheckDirectory(subFolderName);
-          //if (!isExist)
-          //  error = !CreateDirectory(subFolderName);
-
-          //if (error)
-          //{
-          //  //logla 
-          //  break;
-          //}
 
           var filePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.ZipName);
           if (File.Exists(filePath))
@@ -87,38 +77,21 @@ namespace Matriks.ClientAPI.Setup.Models
           error = !ZipToFile(appInfo, filePath);
           if (error)
           {
-            SetupLogger.WriteInfoLog(appInfo.ZipName + " isimli zip dosyasi extract islemi esnasinda hata olustu. Yukleme Iptal ediliyor..");
+            SetupLogger.WriteInfoLog(appInfo.ZipName +
+                                     " isimli zip dosyasi extract islemi esnasinda hata olustu. Yukleme Iptal ediliyor..");
             break;
           }
 
           ZipFile.ExtractToDirectory(filePath, subFolderName);
-          //using (var archive = ZipFile.OpenRead(filePath))
-          //{
-          //  foreach (var entry in archive.Entries)
-          //  {
-          //   // Thread.Sleep(200);
-          //    if (entry.Length > 0)
-          //    {
-          //      var fileName = Path.Combine(subFolderName, entry.Name);
-          //      if (File.Exists(fileName) || (entry.FullName.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase)))
-          //        continue;
-
-          //      entry.ExtractToFile(fileName);
-          //    }
-          //  }
-          //}
 
           try
           {
             File.Delete(filePath);
-            //Directory.Delete(Path.Combine(subFolderName, appInfo.FolderName), true);
           }
           catch (Exception)
           {
             SetupLogger.WriteErrorLog(filePath + " dosyasi silme hatasi. Yukleme duzgun calismayabilir.");
-
-            // logla
-            error = false;
+            error = true;
           }
         }
       }
@@ -126,7 +99,7 @@ namespace Matriks.ClientAPI.Setup.Models
       {
         SetupLogger.WriteErrorLog("Yukeleme tamamlanamadi. Hata:" + ex.StackTrace);
 
-        error = false;
+        error = true;
       }
 
       return error;
@@ -158,7 +131,7 @@ namespace Matriks.ClientAPI.Setup.Models
     {
       try
       {
-        foreach (var appInfo in MatriksClientApiSetup.Apps)
+        foreach (var appInfo in MatriksClientApiSetupModel.Apps)
         {
           var subFolderPath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName);
 
@@ -173,7 +146,8 @@ namespace Matriks.ClientAPI.Setup.Models
       }
       catch (Exception ex)
       {
-        SetupLogger.WriteErrorLog("ExeFileCreator icerisinde CleanFiles islemleri sirasinda hata olustu! hata:" + ex.StackTrace);
+        SetupLogger.WriteErrorLog("ExeFileCreator icerisinde CleanFiles islemleri sirasinda hata olustu! hata:" +
+                                  ex.StackTrace);
         return false;
       }
     }
@@ -206,44 +180,97 @@ namespace Matriks.ClientAPI.Setup.Models
 
     public void RunApplication()
     {
-      foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup && !a.IsWindowsService select a)
+      try
       {
-        var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
-        var result = appInfo.Arguments != null ? Process.Start(exeFilePath, appInfo.Arguments) : Process.Start(exeFilePath);
+        foreach (var appInfo in from a in MatriksClientApiSetupModel.Apps where a.IsSetup && !a.IsWindowsService select a)
+        {
+          var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
+          var result = appInfo.Arguments != null
+            ? Process.Start(exeFilePath, appInfo.Arguments)
+            : Process.Start(exeFilePath);
 
-        SetupLogger.WriteInfoLog(appInfo.ExeName + " uygulamasi baslatildi.");
-
+          SetupLogger.WriteInfoLog(appInfo.ExeName + " uygulamasi baslatildi.");
+        }
+      }
+      catch (Exception ex)
+      {
+        SetupLogger.WriteErrorLog("hata :" + ex.StackTrace);
       }
     }
 
     public void RunServices()
     {
-      foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup && a.IsWindowsService select a)
+      try
       {
-        var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
+        foreach (var appInfo in from a in MatriksClientApiSetupModel.Apps where a.IsSetup && a.IsWindowsService select a)
+        {
+          var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
 
-        var result = appInfo.Arguments != null ? Process.Start(exeFilePath, appInfo.Arguments) : Process.Start(exeFilePath);
+          var result = appInfo.Arguments != null
+            ? Process.Start(exeFilePath, appInfo.Arguments)
+            : Process.Start(exeFilePath);
 
-        if (appInfo.IsWindowsService)
-          result?.WaitForExit();
+          if (appInfo.IsWindowsService)
+            result?.WaitForExit();
 
-        SetupLogger.WriteInfoLog(appInfo.ExeName + " servisi install edildi.");
+          SetupLogger.WriteInfoLog(appInfo.ExeName + " servisi install edildi.");
+        }
+
+      }
+      catch (Exception ex)
+      {
+        SetupLogger.WriteErrorLog("Hata : " + ex.StackTrace);
       }
     }
 
     public void UninstallServices()
     {
-      foreach (var appInfo in from a in MatriksClientApiSetup.Apps where a.IsSetup && a.IsWindowsService select a)
+      foreach (var appInfo in from a in MatriksClientApiSetupModel.Apps where a.IsSetup && a.IsWindowsService select a)
       {
         var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
 
-        var result = Process.Start(exeFilePath, " uninstall");
+        var isRunning = WindowsServiceIsRunning(appInfo.ServiceName);
 
-        if (appInfo.IsWindowsService)
-          result?.WaitForExit();
+        if (isRunning)
+        {
+          var result = Process.Start(exeFilePath, " uninstall");
 
-        SetupLogger.WriteInfoLog(appInfo.ExeName + " servisi uninstall edildi.");
+          if (appInfo.IsWindowsService)
+            result?.WaitForExit();
+
+          SetupLogger.WriteInfoLog(appInfo.ExeName + " servisi uninstall edildi.");
+        }
       }
+    }
+
+    public bool GetProcessPath(string name)
+    {
+      Process[] processes = Process.GetProcessesByName(name);
+
+      if (processes.Length > 0)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    public bool WindowsServiceIsRunning(string serviceName)
+    {
+      try
+      {
+        var sc = new ExtendedService(serviceName);
+
+        sc.Stop();
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+
+      return true;
     }
 
     public static void CopyStream(Stream input, Stream output)

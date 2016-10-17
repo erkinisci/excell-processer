@@ -41,8 +41,8 @@
     <StartupObject>Matriks.ClientAPI.Setup.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="matriks.wpf, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\matriks-clientapi\packages\Matriks.Wpf.1.0.0.4\lib\net45\matriks.wpf.dll</HintPath>
+    <Reference Include="matriks.wpf, Version=1.0.0.33, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Matriks.Wpf.1.0.0.33\lib\net45\matriks.wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -50,8 +50,8 @@
       <HintPath>..\packages\NLog.4.3.10\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="omsentlib, Version=1.1.0.16, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\matriks-clientapi\packages\Matriks.Oms.EnterpriseLibrary.1.1.0.16\lib\net45\omsentlib.dll</HintPath>
+    <Reference Include="omsentlib, Version=1.1.0.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Matriks.Oms.EnterpriseLibrary.1.1.0.27\lib\net45\omsentlib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -85,6 +85,7 @@
     <Compile Include="Core\Windows\WindowCloseCommand.cs" />
     <Compile Include="Core\Windows\WindowFeatures.cs" />
     <Compile Include="Models\AppInfo.cs" />
+    <Compile Include="Models\AppPreferencesModel.cs" />
     <Compile Include="Models\ExeFileCreator.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Bootstrapter.cs" />
@@ -163,13 +164,13 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="ExeFiles\ClientAPIServer.zip" />
-    <EmbeddedResource Include="ExeFiles\ClientAPIPriceServer.zip" />
-    <EmbeddedResource Include="ExeFiles\ClientAPIPriceUpdater.zip" />
-    <EmbeddedResource Include="ExeFiles\ClientAPIMonitor.zip" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="ExeFiles\ClientAPI Monitor.zip" />
+    <EmbeddedResource Include="ExeFiles\ClientAPI PriceServer.zip" />
+    <EmbeddedResource Include="ExeFiles\ClientAPI PriceUpdater.zip" />
+    <EmbeddedResource Include="ExeFiles\ClientAPI Server.zip" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -215,6 +216,17 @@
     <Content Include="config\settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
