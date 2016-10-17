@@ -161,7 +161,6 @@
     <Resource Include="Themes\Fonts\Mohave.otf" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Images\manager.ico" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
