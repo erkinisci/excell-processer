@@ -233,7 +233,7 @@ namespace Matriks.ClientAPI.Setup.Models
 
         if (isRunning)
         {
-          var result = Process.Start(exeFilePath, " uninstall");
+          var result = Process.Start(exeFilePath, " /uninstall /nomsg");
 
           if (appInfo.IsWindowsService)
             result?.WaitForExit();
