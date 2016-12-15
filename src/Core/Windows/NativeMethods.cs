@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Matriks.ClientAPI.Setup.Core.Windows
+namespace Excell.Processor.Core.Windows
 {
   internal static class NativeMethods
   {

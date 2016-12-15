@@ -4,13 +4,12 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
-using System.ServiceProcess;
-using Matriks.ClientAPI.Setup.Core;
+using Excell.Processor.Core;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
 using Matriks.Oms.EnterpriseLibrary.Windows;
 
-namespace Matriks.ClientAPI.Setup.Models
+namespace Excell.Processor.Models
 {
   public class ExeFileCreator
   {

@@ -1,4 +1,4 @@
-﻿namespace Matriks.ClientAPI.Setup.Core
+﻿namespace Excell.Processor.Core
 {
   public interface ISetupLogger
   {

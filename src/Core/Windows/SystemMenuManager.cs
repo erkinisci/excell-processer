@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Interop;
 
-namespace Matriks.ClientAPI.Setup.Core.Windows
+namespace Excell.Processor.Core.Windows
 {
     public static class SystemMenuManager
     {        

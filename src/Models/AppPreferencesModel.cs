@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Matriks.ClientAPI.Setup.Core;
+using Excell.Processor.Core;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
 
 //using IWshRuntimeLibrary;
 
-namespace Matriks.ClientAPI.Setup.Models
+namespace Excell.Processor.Models
 {
   public class AppPreferencesModel
   {

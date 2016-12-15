@@ -9,8 +9,8 @@
     <ProjectGuid>{2A57BD52-6F3F-4188-8422-FAE7E07C34D7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Matriks.ClientAPI.Setup</RootNamespace>
-    <AssemblyName>clientapisetup</AssemblyName>
+    <RootNamespace>Excell.Processor</RootNamespace>
+    <AssemblyName>excellprocessor</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Matriks.ClientAPI.Setup.App</StartupObject>
+    <StartupObject>Excell.Processor.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="matriks.wpf, Version=1.0.0.33, Culture=neutral, processorArchitecture=MSIL">
@@ -164,10 +164,6 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="ExeFiles\ClientAPI Monitor.zip" />
-    <EmbeddedResource Include="ExeFiles\ClientAPI PriceServer.zip" />
-    <EmbeddedResource Include="ExeFiles\ClientAPI PriceUpdater.zip" />
-    <EmbeddedResource Include="ExeFiles\ClientAPI Server.zip" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -211,7 +207,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ExeFiles\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

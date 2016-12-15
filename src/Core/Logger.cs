@@ -2,7 +2,7 @@
 using NLog;
 using NLog.Targets;
 
-namespace Matriks.ClientAPI.Setup.Core
+namespace Excell.Processor.Core
 {
   public class SetupLogger : ISetupLogger
   {
@@ -10,7 +10,7 @@ namespace Matriks.ClientAPI.Setup.Core
 
     static SetupLogger()
     {
-      _setupLogger = LogManager.GetLogger("ClientApiSetupLog");
+      _setupLogger = LogManager.GetLogger("ExcellprocessorLog");
     }
 
     public void WriteErrorLog(string message)

@@ -6,8 +6,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
-using Matriks.ClientAPI.Setup.Core;
-using Matriks.ClientAPI.Setup.Models;
+using Excell.Processor.Core;
+using Excell.Processor.Models;
 using Matriks.Oms.EnterpriseLibrary.Common;
 using Matriks.Oms.EnterpriseLibrary.Configuration;
 using Matriks.Oms.EnterpriseLibrary.Resolvers;
@@ -15,7 +15,7 @@ using Matriks.Wpf;
 using Matriks.Wpf.Framework;
 using Matriks.Wpf.Utilities.TaskDialog;
 
-namespace Matriks.ClientAPI.Setup
+namespace Excell.Processor
 {
   /// <summary>
   /// Interaction logic for App.xaml

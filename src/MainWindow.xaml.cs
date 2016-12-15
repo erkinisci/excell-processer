@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using Matriks.Wpf.Framework;
 using Matriks.Wpf.Models;
 
-namespace Matriks.ClientAPI.Setup
+namespace Excell.Processor
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml

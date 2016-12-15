@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Matriks.ClientAPI.Setup.Annotations;
+using Excell.Processor.Properties;
 
-namespace Matriks.ClientAPI.Setup.Models
+namespace Excell.Processor.Models
 {
   public class MatriksClientApiSetupModel : INotifyPropertyChanged
   {

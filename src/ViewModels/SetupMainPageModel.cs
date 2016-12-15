@@ -1,12 +1,12 @@
 using System.Windows;
-using Matriks.ClientAPI.Setup.Core;
-using Matriks.ClientAPI.Setup.Models;
+using Excell.Processor.Core;
+using Excell.Processor.Models;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
 using Matriks.Wpf;
 using Matriks.Wpf.Framework.Commands;
 
-namespace Matriks.ClientAPI.Setup.ViewModels
+namespace Excell.Processor.ViewModels
 {
   public class SetupMainPageModel : NavigateObject
   {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matriks.ClientAPI.Setup", "src\Matriks.ClientAPI.Setup.csproj", "{2A57BD52-6F3F-4188-8422-FAE7E07C34D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excell.Processer", "src\Excell.Processer.csproj", "{2A57BD52-6F3F-4188-8422-FAE7E07C34D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

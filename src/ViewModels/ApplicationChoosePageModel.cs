@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Matriks.Wpf.Framework.Commands;
 
-namespace Matriks.ClientAPI.Setup.ViewModels
+namespace Excell.Processor.ViewModels
 {
   public class ApplicationChoosePageModel : SetupMainPageModel
   {

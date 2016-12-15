@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Matriks.ClientAPI.Setup.Core.Windows
+namespace Excell.Processor.Core.Windows
 {
     public static class WindowDragBehavior
     {

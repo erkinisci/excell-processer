@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
-using Matriks.ClientAPI.Setup.Models;
+using Excell.Processor.Models;
 using Matriks.Wpf.Framework;
 using Matriks.Wpf.Framework.Commands;
 
-namespace Matriks.ClientAPI.Setup.ViewModels
+namespace Excell.Processor.ViewModels
 {
   public class LoadingPageModel : SetupMainPageModel
   {

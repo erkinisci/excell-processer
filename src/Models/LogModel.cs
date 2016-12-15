@@ -1,4 +1,4 @@
-﻿namespace Matriks.ClientAPI.Setup.Models
+﻿namespace Excell.Processor.Models
 {
   public class LogModel
   {

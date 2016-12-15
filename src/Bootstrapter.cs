@@ -1,9 +1,8 @@
-﻿using Matriks.ClientAPI.Setup.ViewModels;
-using Matriks.ClientAPI.Setup.Views;
+﻿using Excell.Processor.ViewModels;
 using Matriks.Wpf;
 using Matriks.Wpf.Framework;
 
-namespace Matriks.ClientAPI.Setup
+namespace Excell.Processor
 {
   public class Bootstrapter : MonitorBootstrapter
   {

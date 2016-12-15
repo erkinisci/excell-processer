@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Matriks.ClientAPI.Setup.Core.Windows
+namespace Excell.Processor.Core.Windows
 {
   public static class ControlDoubleClickBehavior
   {

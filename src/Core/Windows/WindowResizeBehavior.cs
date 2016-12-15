@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace Matriks.ClientAPI.Setup.Core.Windows
+namespace Excell.Processor.Core.Windows
 {
     public static class WindowResizeBehavior
     {

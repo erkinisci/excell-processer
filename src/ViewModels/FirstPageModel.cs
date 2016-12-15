@@ -1,11 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
-using Matriks.ClientAPI.Setup.Models;
+using Excell.Processor.Models;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
 using Matriks.Wpf.Framework.Commands;
 
-namespace Matriks.ClientAPI.Setup.ViewModels
+namespace Excell.Processor.ViewModels
 {
   public class FirstPageModel : SetupMainPageModel
   {
