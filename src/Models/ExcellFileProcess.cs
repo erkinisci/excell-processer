@@ -70,14 +70,14 @@ namespace Excell.Processor.Models
               }
               catch (Exception ex)
               {
-                SetupLogger.WriteInfoLog($"Hata. Hucre degeri alinirken olustu. {ex.StackTrace}");
+                SetupLogger.WriteErrorLog($"Hata. Hucre degeri alinirken olustu. {ex.StackTrace}");
               }
             }
           }
         }
         catch (Exception ex)
         {
-          SetupLogger.WriteInfoLog($"Hata ColumnsValue. {ex.StackTrace}");
+          SetupLogger.WriteErrorLog($"Hata ColumnsValue. {ex.StackTrace}");
         }
         finally
         {
@@ -96,7 +96,7 @@ namespace Excell.Processor.Models
       }
       catch (Exception ex)
       {
-        SetupLogger.WriteInfoLog($"Hata GetColumnCollection: {ex.StackTrace}");
+        SetupLogger.WriteErrorLog($"Hata GetColumnCollection: {ex.StackTrace}");
       }
 
 
@@ -133,13 +133,13 @@ namespace Excell.Processor.Models
             }
             catch (Exception ex)
             {
-              SetupLogger.WriteInfoLog($"Hata. Hucre degeri alinirken olustu. {ex.StackTrace}");
+              SetupLogger.WriteErrorLog($"Hata. Hucre degeri alinirken olustu. {ex.StackTrace}");
             }
           }
         }
         catch (Exception ex)
         {
-          SetupLogger.WriteInfoLog($"Hata ColumnsValue. {ex.StackTrace}");
+          SetupLogger.WriteErrorLog($"Hata ColumnsValue. {ex.StackTrace}");
         }
         finally
         {
@@ -158,7 +158,7 @@ namespace Excell.Processor.Models
       }
       catch (Exception ex)
       {
-        SetupLogger.WriteInfoLog($"Hata GetColumnCollection: {ex.StackTrace}");
+        SetupLogger.WriteErrorLog($"Hata GetColumnCollection: {ex.StackTrace}");
       }
 
       return columns;

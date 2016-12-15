@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel;
+using System.Data;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using Excell.Processor.Interfaces;
@@ -14,6 +17,7 @@ namespace Excell.Processor.ViewModels
 {
   public class LoadingPageModel : SetupMainPageModel
   {
+    private IOfficeeDocumentManager _officeDocumentManager;
     public DelegateCommand LoadCommand { get; set; }
 
     public bool IsLoading { get; private set; }
@@ -90,15 +94,15 @@ namespace Excell.Processor.ViewModels
 
     private void Bw_DoWork(object sender, DoWorkEventArgs e)
     {
-     var officeDocumentManager  = DependencyContainer.Resolver.GetService<IOfficeeDocumentManager>();
+
 
       foreach (var fileProcessingItem in FileSingletonModel.ProcessingFileCollection)
       {
         var excelTable = ExcellFileProcess.Instance.GetConentAsTable(fileProcessingItem.File, fileProcessingItem.Columns);
         if (excelTable != null)
         {
-          var result = officeDocumentManager.CreateExcelDocument(fileProcessingItem.File, excelTable);
-          if (result)
+          var result = ExcelTransfer(fileProcessingItem.File, excelTable);
+          if (result.Result)
           {
             fileProcessingItem.ProgressBarVisibility = Visibility.Collapsed;
             fileProcessingItem.DonePathVisibility = Visibility.Visible;
@@ -106,6 +110,21 @@ namespace Excell.Processor.ViewModels
         }
       }
       e.Result = true;
+    }
+
+    private async Task<bool> ExcelTransfer(FileItem file, DataTable excelTable)
+    {
+      if (_officeDocumentManager == null)
+        _officeDocumentManager = DependencyContainer.Resolver.GetService<IOfficeeDocumentManager>();
+
+      var isSuccess = false;
+
+      await Task.Factory.StartNew(() =>
+        {
+          isSuccess = _officeDocumentManager.CreateExcelDocument(file, excelTable);
+        }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
+
+      return isSuccess;
     }
   }
 }
