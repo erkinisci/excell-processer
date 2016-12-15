@@ -43,12 +43,21 @@ namespace Excell.Processor.ViewModels
       Task.Factory.StartNew(() =>
       {
 
-        foreach (var s in ExcellFileProcess.Instance.GetColumnCollection(firstFile))
+        foreach (var columnItem in ExcellFileProcess.Instance.GetColumnCollection(firstFile))
         {
-          FilesingletonModel.ColumnCollection.Add(new ColumnItem() { ColumName = s.ColumName, Index = s.Index, IsSelected = true });
+          FilesingletonModel.ColumnCollection.Add(new ColumnItem() { ColumName = columnItem.ColumName, Index = columnItem.Index, IsSelected = columnItem.IsSelected });
         }
+
         Dispatcher.DoInvoke(() => { ProgressBarVisibility = Visibility.Collapsed; }, DispatcherPriority.Send);
       });
+    }
+
+    public override void OnNextPageCommand()
+    {
+      if(ProgressBarVisibility == Visibility.Visible)
+        return;
+
+      base.OnNextPageCommand();
     }
 
     public Visibility ProgressBarVisibility

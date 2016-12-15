@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using Excell.Processor.Models;
+using Matriks.Oms.EnterpriseLibrary;
+using Matriks.Oms.EnterpriseLibrary.Common;
 using Matriks.Wpf.Framework;
 using Matriks.Wpf.Framework.Commands;
 
@@ -15,18 +18,22 @@ namespace Excell.Processor.ViewModels
 
     public bool IsLoading { get; private set; }
 
-    private ExeFileCreator ExeFileCreator { get; set; }
+    public FileSingletonModel FileSingletonModel { get; set; }
 
     public override void OnLoaded(FrameworkElement view)
     {
       base.OnLoaded(view);
 
-      ProgressBarVisibility = Visibility.Collapsed;
-
       LoadCommand = new DelegateCommand(OnLoadCommand);
       LastCommand = new DelegateCommand(OnLastCommand);
 
-      ExeFileCreator = new ExeFileCreator();
+      FileSingletonModel = DependencyContainer.Resolver.GetService<FileSingletonModel>();
+      var fileList = FileSingletonModel.FileCollection.ToList().Where(x => x.IsSelected);
+      var columnList = FileSingletonModel.ColumnCollection.ToList().Where(x => x.IsSelected);
+
+      foreach (var fileItem in fileList)
+        FileSingletonModel.ProcessingFileCollection.Add(new FileProcessingItem() { File = fileItem, Columns = columnList, IsSelected = true, ProgressBarVisibility = Visibility.Collapsed });
+      //ExcellFileProcess.Instance.GetConentAsTable(FilesingletonModel.FileCollection.First(), FilesingletonModel.ColumnCollection.ToList());
 
       IsLoading = false;
     }
@@ -40,7 +47,8 @@ namespace Excell.Processor.ViewModels
     private void OnLastCommand()
     {
       if (IsApplicationStart)
-        ExeFileCreator.RunApplication();
+      {
+      }
 
       Application.Current.Shutdown();
     }
@@ -50,8 +58,11 @@ namespace Excell.Processor.ViewModels
       if (IsLoading)
         return;
 
-      ProgressBarVisibility = Visibility.Visible;
-
+      foreach (var fileProcessingItem in FileSingletonModel.ProcessingFileCollection)
+      {
+        fileProcessingItem.ProgressBarVisibility = Visibility.Visible;
+      }
+      return;
       BackgroundWorker bw = new BackgroundWorker();
       bw.DoWork += Bw_DoWork;
       bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
@@ -71,10 +82,8 @@ namespace Excell.Processor.ViewModels
       IsLoading = false;
       if (!result)
       {
-        AppPreferencesModel.CreateShortcut();
         SetupLogger.WriteInfoLog("Servislerin calisma durumu kontrol ediliyor...");
-        ExeFileCreator.UninstallServices();
-        ExeFileCreator.RunServices();
+
         SetupLogger.WriteInfoLog("Servislerin calisma durumu kontrolu tamamlandi.");
 
         Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
@@ -87,7 +96,7 @@ namespace Excell.Processor.ViewModels
 
     private void Bw_DoWork(object sender, DoWorkEventArgs e)
     {
-      e.Result = ExeFileCreator.ExtractFilesFromEmbeddedZip();
+      e.Result = null;
     }
 
     public bool IsApplicationStart
@@ -98,14 +107,5 @@ namespace Excell.Processor.ViewModels
 
     // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty IsApplicationStartProperty = DependencyProperty.Register("IsApplicationStart", typeof(bool), typeof(LoadingPageModel));
-
-    public Visibility ProgressBarVisibility
-    {
-      get { return (Visibility)GetValue(ProgressBarVisibilityProperty); }
-      set { SetValue(ProgressBarVisibilityProperty, value); }
-    }
-
-    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-    public static readonly DependencyProperty ProgressBarVisibilityProperty = DependencyProperty.Register("ProgressBarVisibility", typeof(Visibility), typeof(LoadingPageModel));
   }
 }

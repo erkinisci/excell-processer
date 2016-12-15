@@ -11,12 +11,25 @@ namespace Excell.Processor.ViewModels
   {
     public FileSingletonModel()
     {
-      FileCollection = new ObservableCollection<FileItem>();
+      FileCollection = new DispatchedObservableCollection<FileItem>();
       ColumnCollection = new DispatchedObservableCollection<ColumnItem>();
+      ProcessingFileCollection = new DispatchedObservableCollection<FileProcessingItem>();
     }
 
-    private ObservableCollection<FileItem> _fileCollection;
-    public ObservableCollection<FileItem> FileCollection
+
+    private DispatchedObservableCollection<FileProcessingItem> _processingFileCollection;
+    public DispatchedObservableCollection<FileProcessingItem> ProcessingFileCollection
+    {
+      get { return _processingFileCollection; }
+      set
+      {
+        _processingFileCollection = value;
+        OnPropertyChanged(nameof(ProcessingFileCollection));
+      }
+    }
+
+    private DispatchedObservableCollection<FileItem> _fileCollection;
+    public DispatchedObservableCollection<FileItem> FileCollection
     {
       get { return _fileCollection; }
       set
