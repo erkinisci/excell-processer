@@ -24,7 +24,7 @@ namespace Excell.Processor.ViewModels
     {
       base.OnLoaded(view);
 
-      MatriksClientApiSetup = DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
+      ExcellProcessorSetup = DependencyContainer.Resolver.GetService<ExcellProcessorSetupModel>("ExcellProcessorSetupModel");
       SetupLogger = DependencyContainer.Resolver.GetService<ISetupLogger>("SetupLogger");
 
       ReturnCommand = new DelegateCommand(OnReturnCommand);
@@ -48,13 +48,13 @@ namespace Excell.Processor.ViewModels
       App.MenuListBoxSelection(-1);
     }
 
-    public MatriksClientApiSetupModel MatriksClientApiSetup
+    public ExcellProcessorSetupModel ExcellProcessorSetup
     {
-      get { return (MatriksClientApiSetupModel)GetValue(MatriksClientApiSetupProperty); }
-      set { SetValue(MatriksClientApiSetupProperty, value); }
+      get { return (ExcellProcessorSetupModel)GetValue(ExcellProcessorSetupProperty); }
+      set { SetValue(ExcellProcessorSetupProperty, value); }
     }
 
     // Using a DependencyProperty as the backing store for Menus.  This enables animation, styling, binding, etc...
-    public static readonly DependencyProperty MatriksClientApiSetupProperty = DependencyProperty.Register("MatriksClientApiSetup", typeof(MatriksClientApiSetupModel), typeof(SetupMainPageModel));
+    public static readonly DependencyProperty ExcellProcessorSetupProperty = DependencyProperty.Register("ExcellProcessorSetup", typeof(ExcellProcessorSetupModel), typeof(SetupMainPageModel));
   }
 }

@@ -14,15 +14,15 @@ namespace Excell.Processor.Models
   public class ExeFileCreator
   {
     public const string ResourceString = "Matriks.ClientAPI.Setup.ExeFiles";
-    public MatriksClientApiSetupModel MatriksClientApiSetup { get; set; }
+    public ExcellProcessorSetupModel ExcellProcessorSetup { get; set; }
 
     public ISetupLogger SetupLogger { get; set; }
 
 
     public ExeFileCreator()
     {
-      MatriksClientApiSetup =
-        DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
+      ExcellProcessorSetup =
+        DependencyContainer.Resolver.GetService<ExcellProcessorSetupModel>("ExcellProcessorSetupModel");
       SetupLogger = DependencyContainer.Resolver.GetService<ISetupLogger>("SetupLogger");
     }
 
@@ -38,22 +38,22 @@ namespace Excell.Processor.Models
       var error = false;
       try
       {
-        SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasor konumu kontrol ediliyor.");
+        SetupLogger.WriteInfoLog(ExcellProcessorSetup.MainFolderPath + " klasor konumu kontrol ediliyor.");
 
-        var isExist = CheckDirectory(MatriksClientApiSetup.MainFolderPath);
+        var isExist = CheckDirectory(ExcellProcessorSetup.MainFolderPath);
         if (!isExist)
         {
-          SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasor bulunamadi. Olusturuluyor...");
+          SetupLogger.WriteInfoLog(ExcellProcessorSetup.MainFolderPath + " klasor bulunamadi. Olusturuluyor...");
 
-          error = !CreateDirectory(MatriksClientApiSetup.MainFolderPath);
+          error = !CreateDirectory(ExcellProcessorSetup.MainFolderPath);
         }
 
         if (error)
         {
-          SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasoru olusturulamadi.");
+          SetupLogger.WriteInfoLog(ExcellProcessorSetup.MainFolderPath + " klasoru olusturulamadi.");
           return error;
         }
-        SetupLogger.WriteInfoLog(MatriksClientApiSetup.MainFolderPath + " klasor bulunamadi. Olusturuldu.");
+        SetupLogger.WriteInfoLog(ExcellProcessorSetup.MainFolderPath + " klasor bulunamadi. Olusturuldu.");
 
         UninstallServices();
         error = !CleanFiles();
@@ -63,16 +63,16 @@ namespace Excell.Processor.Models
           return error;
         }
 
-        foreach (var appInfo in from a in MatriksClientApiSetupModel.Apps where a.IsSetup select a)
+        foreach (var appInfo in from a in ExcellProcessorSetupModel.Apps where a.IsSetup select a)
         {
-          var subFolderName = Path.Combine(MatriksClientApiSetup.MainFolderPath);
+          var subFolderName = Path.Combine(ExcellProcessorSetup.MainFolderPath);
 
-          var filePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.ZipName);
+          var filePath = Path.Combine(ExcellProcessorSetup.MainFolderPath, appInfo.ZipName);
           if (File.Exists(filePath))
             DeleteFiles(subFolderName);
-          isExist = CheckDirectory(Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName));
+          isExist = CheckDirectory(Path.Combine(ExcellProcessorSetup.MainFolderPath, appInfo.FolderName));
           if (isExist)
-            Directory.Delete(Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName), true);
+            Directory.Delete(Path.Combine(ExcellProcessorSetup.MainFolderPath, appInfo.FolderName), true);
           error = !ZipToFile(appInfo, filePath);
           if (error)
           {
@@ -130,9 +130,9 @@ namespace Excell.Processor.Models
     {
       try
       {
-        foreach (var appInfo in MatriksClientApiSetupModel.Apps)
+        foreach (var appInfo in ExcellProcessorSetupModel.Apps)
         {
-          var subFolderPath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName);
+          var subFolderPath = Path.Combine(ExcellProcessorSetup.MainFolderPath, appInfo.FolderName);
 
           SetupLogger.WriteInfoLog(subFolderPath + " klasoru konumu kontrol ediliyor...");
           if (!CheckDirectory(subFolderPath)) continue;
@@ -181,9 +181,9 @@ namespace Excell.Processor.Models
     {
       try
       {
-        foreach (var appInfo in from a in MatriksClientApiSetupModel.Apps where a.IsSetup && !a.IsWindowsService select a)
+        foreach (var appInfo in from a in ExcellProcessorSetupModel.Apps where a.IsSetup && !a.IsWindowsService select a)
         {
-          var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
+          var exeFilePath = Path.Combine(ExcellProcessorSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
           var result = appInfo.Arguments != null
             ? Process.Start(exeFilePath, appInfo.Arguments)
             : Process.Start(exeFilePath);
@@ -201,9 +201,9 @@ namespace Excell.Processor.Models
     {
       try
       {
-        foreach (var appInfo in from a in MatriksClientApiSetupModel.Apps where a.IsSetup && a.IsWindowsService select a)
+        foreach (var appInfo in from a in ExcellProcessorSetupModel.Apps where a.IsSetup && a.IsWindowsService select a)
         {
-          var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
+          var exeFilePath = Path.Combine(ExcellProcessorSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
 
           var result = appInfo.Arguments != null
             ? Process.Start(exeFilePath, appInfo.Arguments)
@@ -224,9 +224,9 @@ namespace Excell.Processor.Models
 
     public void UninstallServices()
     {
-      foreach (var appInfo in from a in MatriksClientApiSetupModel.Apps where a.IsSetup && a.IsWindowsService select a)
+      foreach (var appInfo in from a in ExcellProcessorSetupModel.Apps where a.IsSetup && a.IsWindowsService select a)
       {
-        var exeFilePath = Path.Combine(MatriksClientApiSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
+        var exeFilePath = Path.Combine(ExcellProcessorSetup.MainFolderPath, appInfo.FolderName, appInfo.ExeName);
 
         var isRunning = WindowsServiceIsRunning(appInfo.ServiceName);
 

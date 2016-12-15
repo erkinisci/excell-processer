@@ -11,11 +11,11 @@
   ResizeMode="CanMinimize"
   WindowStartupLocation="CenterScreen"
   mc:Ignorable="d"
-  windows:WindowFeatures.Statu="0"
-  d:DataContext="{d:DesignInstance processor:MainWindow}"
-  Title="Excell Processor For" Height="480" Width="640" Icon="Images/managerw.ico"
+  Title="Excell Processor For" Height="768" Width="1024" Icon="Images/managerw.ico"
   FontFamily="/clientapimanager;component/Themes/Fonts/#Open Sans Condensed Light">
 
+  <!--windows:WindowFeatures.Statu="0"
+  d:DataContext="{d:DesignInstance processor:MainWindow}"-->
 
   <Grid>
     <Grid.ColumnDefinitions>

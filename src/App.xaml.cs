@@ -55,7 +55,7 @@ namespace Excell.Processor
       module.Initialize();
 
       DependencyContainer.AddResolver(new SingletonDependencyResolver<IAppSettings>(new UIAppSettings(), "UISettings"));
-      DependencyContainer.AddResolver(new SingletonDependencyResolver<MatriksClientApiSetupModel>(new MatriksClientApiSetupModel(), "MatriksClientApiSetupModel"));
+      DependencyContainer.AddResolver(new SingletonDependencyResolver<ExcellProcessorSetupModel>(new ExcellProcessorSetupModel(), "ExcellProcessorSetupModel"));
       DependencyContainer.AddResolver(new SingletonDependencyResolver<ISetupLogger>(new SetupLogger(), "SetupLogger"));
 
       var mainWindow = new MainWindow();

@@ -38,9 +38,9 @@
 
       <TextBlock Height="34" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="UYGULAMALAR" VerticalAlignment="Top" FontSize="30" Foreground="{StaticResource Sunflower}" Width="440" Canvas.Top="133" />
 
-      <CheckBox x:Name="CheckBox" Content="{Binding MatriksClientApiSetup.Apps[0].FolderName}" FontSize="14" Foreground="{StaticResource Sunflower}" Width="350" Canvas.Left="20" Canvas.Top="194" IsChecked="{Binding MatriksClientApiSetup.Apps[0].IsSetup}"/>
-      <CheckBox x:Name="CheckBox1" Content="{Binding MatriksClientApiSetup.Apps[1].FolderName}" FontSize="14" Foreground="{StaticResource Sunflower}" Width="350" Canvas.Left="20" Canvas.Top="214" IsChecked="{Binding MatriksClientApiSetup.Apps[1].IsSetup}"/>
-      <CheckBox x:Name="CheckBox2" Content="{Binding MatriksClientApiSetup.Apps[2].FolderName}" FontSize="14" Foreground="{StaticResource Sunflower}" Width="350" Canvas.Left="20" Canvas.Top="234" IsChecked="{Binding MatriksClientApiSetup.Apps[2].IsSetup}"/>
+      <CheckBox x:Name="CheckBox" Content="{Binding ExcellProcessorSetup.Apps[0].FolderName}" FontSize="14" Foreground="{StaticResource Sunflower}" Width="350" Canvas.Left="20" Canvas.Top="194" IsChecked="{Binding ExcellProcessorSetup.Apps[0].IsSetup}"/>
+      <CheckBox x:Name="CheckBox1" Content="{Binding ExcellProcessorSetup.Apps[1].FolderName}" FontSize="14" Foreground="{StaticResource Sunflower}" Width="350" Canvas.Left="20" Canvas.Top="214" IsChecked="{Binding ExcellProcessorSetup.Apps[1].IsSetup}"/>
+      <CheckBox x:Name="CheckBox2" Content="{Binding ExcellProcessorSetup.Apps[2].FolderName}" FontSize="14" Foreground="{StaticResource Sunflower}" Width="350" Canvas.Left="20" Canvas.Top="234" IsChecked="{Binding ExcellProcessorSetup.Apps[2].IsSetup}"/>
 
     </Canvas>
 

@@ -19,11 +19,11 @@ namespace Excell.Processor.ViewModels
     {
       using (var dlg = new FolderBrowserDialog())
       {
-        dlg.SelectedPath = MatriksClientApiSetup.MainFolderPath;
+        dlg.SelectedPath = ExcellProcessorSetup.MainFolderPath;
         var result = dlg.ShowDialog();
         if (result == DialogResult.OK)
         {
-          MatriksClientApiSetup.MainFolderPath = dlg.SelectedPath;
+          ExcellProcessorSetup.MainFolderPath = dlg.SelectedPath;
         }
       }
     }

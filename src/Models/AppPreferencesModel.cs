@@ -17,11 +17,11 @@ namespace Excell.Processor.Models
 
       SetupLogger = DependencyContainer.Resolver.GetService<ISetupLogger>("SetupLogger");
 
-      var appInfo = MatriksClientApiSetupModel.FindApp("clientapimanager");
+      var appInfo = ExcellProcessorSetupModel.FindApp("clientapimanager");
       if (appInfo == null)
         return;
 
-      var mts = new MatriksClientApiSetupModel();
+      var mts = new ExcellProcessorSetupModel();
 
       SetupLogger.WriteInfoLog("Windows Script Host Shell Object reflection islemleri basliyor.");
       var t = Type.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8")); //Windows Script Host Shell Object

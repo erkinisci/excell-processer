@@ -15,7 +15,7 @@ namespace Excell.Processor.ViewModels
     {
       base.OnLoaded(view);
 
-      MatriksClientApiSetup = DependencyContainer.Resolver.GetService<MatriksClientApiSetupModel>("MatriksClientApiSetupModel");
+      ExcellProcessorSetup = DependencyContainer.Resolver.GetService<ExcellProcessorSetupModel>("ExcellProcessorSetupModel");
 
       OpenErrorFileCommand = new DelegateCommand(OnOpenErrorFileCommand);
     }

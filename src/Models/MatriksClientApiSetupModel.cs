@@ -6,7 +6,7 @@ using Excell.Processor.Properties;
 
 namespace Excell.Processor.Models
 {
-  public class MatriksClientApiSetupModel : INotifyPropertyChanged
+  public class ExcellProcessorSetupModel : INotifyPropertyChanged
   {
     private string _mainFolderPath = @"C:\MATRIKS_OMS";
 
@@ -18,7 +18,7 @@ namespace Excell.Processor.Models
 
     public static List<AppInfo> Apps { get; set; }
 
-    public MatriksClientApiSetupModel()
+    public ExcellProcessorSetupModel()
     {
       Apps = new List<AppInfo>()
       {
