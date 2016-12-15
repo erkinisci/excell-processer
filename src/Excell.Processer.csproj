@@ -84,6 +84,7 @@
     <Compile Include="Models\AppInfo.cs" />
     <Compile Include="Models\AppPreferencesModel.cs" />
     <Compile Include="Models\ExeFileCreator.cs" />
+    <Compile Include="Models\FileItem.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Bootstrapter.cs" />
     <Compile Include="Models\ExcellProcessorSetupModel.cs" />

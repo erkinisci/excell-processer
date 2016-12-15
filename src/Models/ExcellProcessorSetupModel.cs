@@ -23,6 +23,9 @@ namespace Excell.Processor.Models
     public ExcellProcessorSetupModel()
     {
       MainFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExcellFolder");
+      if (!Directory.Exists(MainFolderPath))
+        Directory.CreateDirectory(MainFolderPath);
+
       Apps = new List<AppInfo>()
       {
           new AppInfo() { ZipName = "ClientAPI Server.zip", ExeName = "clientserver.exe", ServiceName = "ClientApiService", FolderName = "ClientAPI Server", Args = new []{ "/install /nomsg"}, IsWindowsService = true, IsSetup = true}

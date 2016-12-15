@@ -1,30 +1,38 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Windows;
 using System.Windows.Forms;
+using Excell.Processor.Models;
 using Matriks.Wpf.Framework.Commands;
 
 namespace Excell.Processor.ViewModels
 {
   public class ApplicationChoosePageModel : SetupMainPageModel
   {
-    public DelegateCommand FilePathDialogCommand { get; set; }
+    private ObservableCollection<FileItem> _fileCollection;
+    public ObservableCollection<FileItem> FileCollection
+    {
+      get { return _fileCollection; }
+      set
+      {
+        _fileCollection = value;
+        RaisePropertyChanged(nameof(FileCollection));
+      }
+    }
 
     public override void OnLoaded(FrameworkElement view)
     {
       base.OnLoaded(view);
 
-      FilePathDialogCommand = new DelegateCommand(OnFilePathDialogCommand);
-    }
-
-    private void OnFilePathDialogCommand()
-    {
-      using (var dlg = new FolderBrowserDialog())
+      FileCollection = new ObservableCollection<FileItem>();
+      var extensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { ".xls", ".xlsx" };
+      
+      foreach (var s in Directory.EnumerateFiles(ExcellProcessorSetup.MainFolderPath).Where(filename => extensions.Contains(Path.GetExtension(filename))))
       {
-        dlg.SelectedPath = ExcellProcessorSetup.MainFolderPath;
-        var result = dlg.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-          ExcellProcessorSetup.MainFolderPath = dlg.SelectedPath;
-        }
+        FileCollection.Add(new FileItem() { FileName = Path.GetFileName(s), Path = s, IsSelected = true });
       }
     }
   }
