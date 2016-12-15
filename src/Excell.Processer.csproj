@@ -86,7 +86,7 @@
     <Compile Include="Models\ExeFileCreator.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Bootstrapter.cs" />
-    <Compile Include="Models\MatriksClientApiSetupModel.cs" />
+    <Compile Include="Models\ExcellProcessorSetupModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ApplicationChoosePageModel.cs" />
     <Compile Include="ViewModels\ErrorPageModel.cs" />
