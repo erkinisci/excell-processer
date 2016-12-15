@@ -22,7 +22,8 @@ namespace Excell.Processor
 
       AddMenu("collecting", "views.firstpage");
       AddMenu("FirstPage", "views.firstpage");
-      AddMenu("ApplicationChoosePage", "views.applicationchoosepage");     
+      AddMenu("ApplicationChoosePage", "views.applicationchoosepage");
+      AddMenu("ColumnChoosePage", "views.columnchoosepage");
       AddMenu("LoadingPage", "views.loadingpage");
       AddMenu("ComplatedPage", "views.complatedpage");
       AddMenu("ErrorPage", "views.errorpage");

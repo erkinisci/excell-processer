@@ -12,4 +12,11 @@ namespace Excell.Processor.Models
     public string Path { get; set; }
     public bool IsSelected { get; set; }
   }
+
+  public class ColumnItem
+  {
+    public string ColumName { get; set; }
+    public int Index { get; set; }
+    public bool IsSelected { get; set; }
+  }
 }

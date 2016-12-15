@@ -10,6 +10,7 @@ namespace Excell.Processor
     {
       NavigationService.RegisterViewModel("/Views/FirstPage.xaml", typeof(FirstPageModel));
       NavigationService.RegisterViewModel("/Views/ApplicationChoosePage.xaml", typeof(ApplicationChoosePageModel));
+      NavigationService.RegisterViewModel("/Views/ColumnChoosePage.xaml", typeof(ColumnChoosePageModel));
       NavigationService.RegisterViewModel("/Views/LoadingPage.xaml", typeof(LoadingPageModel));
       NavigationService.RegisterViewModel("/Views/ComplatedPage.xaml", typeof(LoadingPageModel));
       NavigationService.RegisterViewModel("/Views/ErrorPage.xaml", typeof(ErrorPageModel));

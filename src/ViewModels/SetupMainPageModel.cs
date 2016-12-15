@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using System.Windows;
 using Excell.Processor.Core;
 using Excell.Processor.Models;
@@ -20,17 +19,6 @@ namespace Excell.Processor.ViewModels
     public DelegateCommand CancelCommand { get; set; }
 
     public new DelegateCommand CloseCommand { get; set; }
-
-    private ObservableCollection<FileItem> _fileCollection;
-    public ObservableCollection<FileItem> FileCollection
-    {
-      get { return _fileCollection; }
-      set
-      {
-        _fileCollection = value;
-        RaisePropertyChanged(nameof(FileCollection));
-      }
-    }
 
     public override void OnLoaded(FrameworkElement view)
     {

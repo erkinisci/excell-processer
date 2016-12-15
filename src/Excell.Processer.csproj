@@ -43,6 +43,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.3.10\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
@@ -83,14 +86,18 @@
     <Compile Include="Core\Windows\WindowFeatures.cs" />
     <Compile Include="Models\AppInfo.cs" />
     <Compile Include="Models\AppPreferencesModel.cs" />
+    <Compile Include="Models\ExcellFileProcess.cs" />
     <Compile Include="Models\ExeFileCreator.cs" />
     <Compile Include="Models\FileItem.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Bootstrapter.cs" />
     <Compile Include="Models\ExcellProcessorSetupModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="ViewModels\ApplicationChoosePageModel.cs" />
+    <Compile Include="ViewModels\ColumnChoosePageModel.cs" />
     <Compile Include="ViewModels\ErrorPageModel.cs" />
+    <Compile Include="ViewModels\FileSingletonModel.cs" />
     <Compile Include="ViewModels\LoadingPageModel.cs" />
     <Compile Include="ViewModels\FirstPageModel.cs" />
     <Compile Include="ViewModels\SetupMainPageModel.cs" />
@@ -116,6 +123,10 @@
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColumnChoosePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ErrorPage.xaml">
       <Generator>MSBuild:Compile</Generator>
