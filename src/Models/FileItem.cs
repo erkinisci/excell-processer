@@ -32,10 +32,22 @@ namespace Excell.Processor.Models
   public class FileProcessingItem : INotifyPropertyChanged
   {
     private Visibility _progressBarVisibility;
+    private Visibility _donePathVisibility;
+
     public FileItem File { get; set; }
     public IEnumerable<ColumnItem> Columns { get; set; }
     public bool IsSelected { get; set; }
     public bool IsDone { get; set; }
+
+    public Visibility DonePathVisibility
+    {
+      get { return _donePathVisibility; }
+      set
+      {
+        _donePathVisibility = value;
+        OnPropertyChanged(nameof(DonePathVisibility));
+      }
+    }
 
     public Visibility ProgressBarVisibility
     {

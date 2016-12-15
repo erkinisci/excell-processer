@@ -23,7 +23,7 @@ namespace Excell.Processor.Models
       SetupLogger = DependencyContainer.Resolver.GetService<ISetupLogger>("SetupLogger");
     }
 
-    public DataTable GetConentAsTable(FileItem file, List<ColumnItem> columns)
+    public DataTable GetConentAsTable(FileItem file, IEnumerable<ColumnItem> columns)
     {
       var excelTable = new DataTable(file.FileName);
 

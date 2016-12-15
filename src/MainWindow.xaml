@@ -157,7 +157,7 @@
               </TextBlock.Style>
             </TextBlock>
           </Canvas>
-          <TextBlock Text="Yükleme Tamamlanıyor" VerticalAlignment="Center" FontSize="14" />
+          <TextBlock Text="Dosyalama İşlemleri" VerticalAlignment="Center" FontSize="14" />
         </StackPanel>
       </ListBoxItem>
     </ListBox>

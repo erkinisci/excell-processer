@@ -32,7 +32,7 @@ namespace Excell.Processor.ViewModels
       var columnList = FileSingletonModel.ColumnCollection.ToList().Where(x => x.IsSelected);
 
       foreach (var fileItem in fileList)
-        FileSingletonModel.ProcessingFileCollection.Add(new FileProcessingItem() { File = fileItem, Columns = columnList, IsSelected = true, ProgressBarVisibility = Visibility.Collapsed });
+        FileSingletonModel.ProcessingFileCollection.Add(new FileProcessingItem() { File = fileItem, Columns = columnList, IsSelected = true, ProgressBarVisibility = Visibility.Collapsed, DonePathVisibility = Visibility.Collapsed });
       //ExcellFileProcess.Instance.GetConentAsTable(FilesingletonModel.FileCollection.First(), FilesingletonModel.ColumnCollection.ToList());
 
       IsLoading = false;
@@ -58,16 +58,14 @@ namespace Excell.Processor.ViewModels
       if (IsLoading)
         return;
 
+      IsLoading = true;
+
       foreach (var fileProcessingItem in FileSingletonModel.ProcessingFileCollection)
-      {
         fileProcessingItem.ProgressBarVisibility = Visibility.Visible;
-      }
-      return;
-      BackgroundWorker bw = new BackgroundWorker();
+
+      var bw = new BackgroundWorker();
       bw.DoWork += Bw_DoWork;
       bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
-
-      IsLoading = true;
       bw.RunWorkerAsync();
     }
 
@@ -80,13 +78,13 @@ namespace Excell.Processor.ViewModels
       bw?.Dispose();
 
       IsLoading = false;
-      if (!result)
+      if (result)
       {
         SetupLogger.WriteInfoLog("Servislerin calisma durumu kontrol ediliyor...");
 
         SetupLogger.WriteInfoLog("Servislerin calisma durumu kontrolu tamamlandi.");
 
-        Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
+        //Dispatcher.DoInvoke(() => { App.MenuListBoxSelection(1); }, DispatcherPriority.Send);
       }
       else
       {
@@ -96,7 +94,16 @@ namespace Excell.Processor.ViewModels
 
     private void Bw_DoWork(object sender, DoWorkEventArgs e)
     {
-      e.Result = null;
+      foreach (var fileProcessingItem in FileSingletonModel.ProcessingFileCollection)
+      {
+        var excelTable = ExcellFileProcess.Instance.GetConentAsTable(fileProcessingItem.File, fileProcessingItem.Columns);
+        if (excelTable != null)
+        {
+          fileProcessingItem.ProgressBarVisibility = Visibility.Collapsed;
+          fileProcessingItem.DonePathVisibility = Visibility.Visible;
+        }
+      }
+      e.Result = true;
     }
 
     public bool IsApplicationStart

@@ -44,9 +44,7 @@ namespace Excell.Processor.ViewModels
       {
 
         foreach (var columnItem in ExcellFileProcess.Instance.GetColumnCollection(firstFile))
-        {
           FilesingletonModel.ColumnCollection.Add(new ColumnItem() { ColumName = columnItem.ColumName, Index = columnItem.Index, IsSelected = columnItem.IsSelected });
-        }
 
         Dispatcher.DoInvoke(() => { ProgressBarVisibility = Visibility.Collapsed; }, DispatcherPriority.Send);
       });
