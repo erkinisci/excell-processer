@@ -16,7 +16,7 @@ namespace Excell.Processor.Models
     public static ExcellFileProcess Instance => _instance ?? (_instance = new ExcellFileProcess());
     public ISetupLogger SetupLogger { get; set; }
 
-    private readonly List<string> _constColumns = new List<string>(new[] {"Ad", "Soyad", "Gsm"});
+    private readonly List<string> _constColumns = new List<string>(new[] { "Ad", "Soyad", "Gsm" });
 
     public ExcellFileProcess()
     {
@@ -44,17 +44,21 @@ namespace Excell.Processor.Models
           SetupLogger.WriteInfoLog($"Kolon Sayisi.{colCount}");
           SetupLogger.WriteInfoLog($"Row Sayisi.{rowCount}");
 
-          excelTable.Columns.Add(new DataColumn() { ColumnName = "Sıra No", DataType = typeof(int) });
+          excelTable.Columns.Add(new DataColumn() { ColumnName = "Sıra No", DataType = typeof(string) });
 
           foreach (var columnItem in (from c in columns where c.IsSelected select c))
-            excelTable.Columns.Add(new DataColumn() {ColumnName = columnItem.ColumName, DataType = typeof(string)});
+            excelTable.Columns.Add(new DataColumn() { ColumnName = columnItem.ColumName, DataType = typeof(string) });
 
           for (var i = 1; i <= rowCount; i++)
           {
             var row = excelTable.NewRow();
             excelTable.Rows.Add(row);
 
-            row[0] = i;
+            if (i == 1)
+              row["Sıra No"] = "Sıra No";
+            else
+              row["Sıra No"] = (i-1).ToString();
+
             foreach (var columnItem in (from c in columns where c.IsSelected select c))
             {
               try

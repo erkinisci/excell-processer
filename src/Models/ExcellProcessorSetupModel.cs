@@ -19,6 +19,13 @@ namespace Excell.Processor.Models
       set { _mainFolderPath = value; OnPropertyChanged(nameof(MainFolderPath)); }
     }
 
+    private string _outherFolderPath;
+    public string OutherFolderPath
+    {
+      get { return _outherFolderPath; }
+      set { _outherFolderPath = value; OnPropertyChanged(nameof(OutherFolderPath)); }
+    }
+
     public static List<AppInfo> Apps { get; set; }
 
     public ExcellProcessorSetupModel()
@@ -26,6 +33,10 @@ namespace Excell.Processor.Models
       MainFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExcellFolder");
       if (!Directory.Exists(MainFolderPath))
         Directory.CreateDirectory(MainFolderPath);
+
+      OutherFolderPath = Path.Combine(Path.GetDirectoryName(MainFolderPath), "OuterExcellFolder");
+      if (!Directory.Exists(OutherFolderPath))
+        Directory.CreateDirectory(OutherFolderPath);
 
       Apps = new List<AppInfo>()
       {
@@ -54,7 +65,6 @@ namespace Excell.Processor.Models
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
-
     [NotifyPropertyChangedInvocator]
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {

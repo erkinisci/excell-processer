@@ -2,9 +2,11 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
+using Excell.Processor.Interfaces;
 using Excell.Processor.Models;
 using Matriks.Oms.EnterpriseLibrary;
 using Matriks.Oms.EnterpriseLibrary.Common;
+using Matriks.Oms.EnterpriseLibrary.Resolvers;
 using Matriks.Wpf.Framework;
 using Matriks.Wpf.Framework.Commands;
 
@@ -88,13 +90,19 @@ namespace Excell.Processor.ViewModels
 
     private void Bw_DoWork(object sender, DoWorkEventArgs e)
     {
+     var officeDocumentManager  = DependencyContainer.Resolver.GetService<IOfficeeDocumentManager>();
+
       foreach (var fileProcessingItem in FileSingletonModel.ProcessingFileCollection)
       {
         var excelTable = ExcellFileProcess.Instance.GetConentAsTable(fileProcessingItem.File, fileProcessingItem.Columns);
         if (excelTable != null)
         {
-          fileProcessingItem.ProgressBarVisibility = Visibility.Collapsed;
-          fileProcessingItem.DonePathVisibility = Visibility.Visible;
+          var result = officeDocumentManager.CreateExcelDocument(fileProcessingItem.File, excelTable);
+          if (result)
+          {
+            fileProcessingItem.ProgressBarVisibility = Visibility.Collapsed;
+            fileProcessingItem.DonePathVisibility = Visibility.Visible;
+          }
         }
       }
       e.Result = true;

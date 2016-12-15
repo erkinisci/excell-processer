@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using Excell.Processor.Core;
+using Excell.Processor.Interfaces;
 using Excell.Processor.Models;
 using Excell.Processor.ViewModels;
 using Matriks.Oms.EnterpriseLibrary.Common;
@@ -59,6 +60,7 @@ namespace Excell.Processor
       DependencyContainer.AddResolver(new SingletonDependencyResolver<ExcellProcessorSetupModel>(new ExcellProcessorSetupModel(), "ExcellProcessorSetupModel"));
       DependencyContainer.AddResolver(new SingletonDependencyResolver<ISetupLogger>(new SetupLogger(), "SetupLogger"));
       DependencyContainer.AddResolver(new SingletonDependencyResolver<FileSingletonModel>(new FileSingletonModel()));
+      DependencyContainer.AddResolver(new SingletonDependencyResolver<IOfficeeDocumentManager>(new OfficeDocumentManager()));
       
       var mainWindow = new MainWindow();
       Current.MainWindow = mainWindow;
