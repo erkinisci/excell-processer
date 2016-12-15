@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using Excell.Processor.Properties;
 
@@ -8,8 +11,7 @@ namespace Excell.Processor.Models
 {
   public class ExcellProcessorSetupModel : INotifyPropertyChanged
   {
-    private string _mainFolderPath = @"C:\MATRIKS_OMS";
-
+    private string _mainFolderPath;
     public string MainFolderPath
     {
       get { return _mainFolderPath; }
@@ -20,6 +22,7 @@ namespace Excell.Processor.Models
 
     public ExcellProcessorSetupModel()
     {
+      MainFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExcellFolder");
       Apps = new List<AppInfo>()
       {
           new AppInfo() { ZipName = "ClientAPI Server.zip", ExeName = "clientserver.exe", ServiceName = "ClientApiService", FolderName = "ClientAPI Server", Args = new []{ "/install /nomsg"}, IsWindowsService = true, IsSetup = true}
@@ -27,6 +30,17 @@ namespace Excell.Processor.Models
           , new AppInfo() { ZipName = "ClientAPI PriceServer.zip", ExeName = "priceServer.exe", ServiceName = "PriceApiServer", FolderName = "ClientAPI PriceServer", Args = new []{ "/install /nomsg"}, IsWindowsService = true, IsSetup = true}
           ,new AppInfo() { ZipName = "ClientAPI Monitor.zip", ShortCutName = "ClientAPI Monitor" ,ExeName = "clientapimanager.exe", FolderName = "ClientAPI Monitor", IsWindowsService = false, IsSetup = true}
       };
+    }
+
+    public static string AssemblyDirectory
+    {
+      get
+      {
+        string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+        UriBuilder uri = new UriBuilder(codeBase);
+        string path = Uri.UnescapeDataString(uri.Path);
+        return Path.GetDirectoryName(path);
+      }
     }
 
     public static AppInfo FindApp(string exeName)
