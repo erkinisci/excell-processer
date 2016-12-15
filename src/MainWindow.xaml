@@ -35,7 +35,7 @@
 
     <Canvas Grid.Column="0" Top="0" Left="0" Width="200">
       <Border Height="399" Canvas.ZIndex="1" Width="200"  Background="Transparent"/>
-        <ListBox Canvas.ZIndex="0" 
+      <ListBox Canvas.ZIndex="0" 
                  Height="399"
                  Width="200"
                  VerticalAlignment="Top" 
@@ -43,27 +43,9 @@
                  Background="{x:Null}" BorderBrush="{x:Null}"
                  Name="MenuListBox"
                  >
-      <ListBoxItem>
-        <StackPanel Orientation="Horizontal" Height="35">
-          <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf0e4;" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0" >
-            <TextBlock.Style>
-              <Style TargetType="TextBlock">
-                <Setter Property="Foreground" Value="White"></Setter>
-                <Style.Triggers>
-                  <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
-                    <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
-                  </DataTrigger>
-                </Style.Triggers>
-              </Style>
-            </TextBlock.Style>
-          </TextBlock>
-          <TextBlock Text="Kurulum" VerticalAlignment="Center" FontSize="16" />
-        </StackPanel>
-      </ListBoxItem>
-      <ListBoxItem IsSelected="True">
-        <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
-          <Canvas Margin="5,5,5,0" Width="25">
-            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf096;" FontSize="23" VerticalAlignment="Center">
+        <ListBoxItem>
+          <StackPanel Orientation="Horizontal" Height="35">
+            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf0e4;" FontSize="20" VerticalAlignment="Center" Margin="5,0,5,0" >
               <TextBlock.Style>
                 <Style TargetType="TextBlock">
                   <Setter Property="Foreground" Value="White"></Setter>
@@ -75,22 +57,40 @@
                 </Style>
               </TextBlock.Style>
             </TextBlock>
-            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf002;" Canvas.Top="5" Canvas.Left="5" FontSize="10" VerticalAlignment="Center">
-              <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                  <Setter Property="Foreground" Value="White"></Setter>
-                  <Style.Triggers>
-                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
-                      <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
-                    </DataTrigger>
-                  </Style.Triggers>
-                </Style>
-              </TextBlock.Style>
-            </TextBlock>
-          </Canvas>
-          <TextBlock Text="Bilgi Toplanıyor" VerticalAlignment="Center" FontSize="14" />
-        </StackPanel>
-      </ListBoxItem>
+            <TextBlock Text="Kurulum" VerticalAlignment="Center" FontSize="16" />
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem IsSelected="True">
+          <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
+            <Canvas Margin="5,5,5,0" Width="25">
+              <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf096;" FontSize="23" VerticalAlignment="Center">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+              <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf002;" Canvas.Top="5" Canvas.Left="5" FontSize="10" VerticalAlignment="Center">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+            </Canvas>
+            <TextBlock Text="Bilgi Toplanıyor" VerticalAlignment="Center" FontSize="14" />
+          </StackPanel>
+        </ListBoxItem>
         <ListBoxItem>
           <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
             <Canvas Margin="5,5,5,0" Width="25">
@@ -123,45 +123,66 @@
           </StackPanel>
         </ListBoxItem>
         <ListBoxItem>
-        <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
-          <Canvas Margin="5,5,5,0" Width="25">
-            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf019;" FontSize="18" VerticalAlignment="Center">
-              <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                  <Setter Property="Foreground" Value="White"></Setter>
-                  <Style.Triggers>
-                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
-                      <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
-                    </DataTrigger>
-                  </Style.Triggers>
-                </Style>
-              </TextBlock.Style>
-            </TextBlock>
-          </Canvas>
-          <TextBlock Text="Kolon Seçimi" VerticalAlignment="Center" FontSize="14" />
-        </StackPanel>
-      </ListBoxItem>
-      <ListBoxItem>
-        <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
-          <Canvas Margin="5,5,5,0" Width="25">
-            <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf046;" FontSize="18" VerticalAlignment="Center">
-              <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                  <Setter Property="Foreground" Value="White"></Setter>
-                  <Style.Triggers>
-                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
-                      <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
-                    </DataTrigger>
-                  </Style.Triggers>
-                </Style>
-              </TextBlock.Style>
-            </TextBlock>
-          </Canvas>
-          <TextBlock Text="Dosyalama İşlemleri" VerticalAlignment="Center" FontSize="14" />
-        </StackPanel>
-      </ListBoxItem>
-    </ListBox>
-    
+          <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
+            <Canvas Margin="5,5,5,0" Width="25">
+              <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf019;" FontSize="18" VerticalAlignment="Center">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+            </Canvas>
+            <TextBlock Text="Kolon Seçimi" VerticalAlignment="Center" FontSize="14" />
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem>
+          <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
+            <Canvas Margin="5,5,5,0" Width="25">
+              <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf046;" FontSize="18" VerticalAlignment="Center">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+            </Canvas>
+            <TextBlock Text="Dosyalama İşlemleri" VerticalAlignment="Center" FontSize="14" />
+          </StackPanel>
+        </ListBoxItem>
+
+        <ListBoxItem>
+          <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="30">
+            <Canvas Margin="5,5,5,0" Width="25">
+              <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf046;" FontSize="18" VerticalAlignment="Center">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource Nephritis}"></Setter>
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+            </Canvas>
+            <TextBlock Text="Tamamlandı" VerticalAlignment="Center" FontSize="14" />
+          </StackPanel>
+        </ListBoxItem>
+
+      </ListBox>
+
     </Canvas>
   </Grid>
 </Window>

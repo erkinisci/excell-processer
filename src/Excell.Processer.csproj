@@ -96,6 +96,7 @@
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="ViewModels\ApplicationChoosePageModel.cs" />
     <Compile Include="ViewModels\ColumnChoosePageModel.cs" />
+    <Compile Include="ViewModels\ComplatedPageModel.cs" />
     <Compile Include="ViewModels\ErrorPageModel.cs" />
     <Compile Include="ViewModels\FileSingletonModel.cs" />
     <Compile Include="ViewModels\LoadingPageModel.cs" />

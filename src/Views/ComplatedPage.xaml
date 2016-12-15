@@ -12,34 +12,60 @@
       <RowDefinition Height="50"/>
     </Grid.RowDefinitions>
 
-    <TextBlock Grid.Row="0" Height="32" Margin="10,0,10,0" TextWrapping="Wrap" Text="Yükleme Tamamlandı" VerticalAlignment="Center" FontSize="20" Foreground="#e5e5e5" />
+    <TextBlock Grid.Row="0" Height="32" Margin="10,0,10,0" TextWrapping="Wrap" Text="Dosyalama Tamamlandı" VerticalAlignment="Center" FontSize="20" Foreground="#e5e5e5" />
 
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="200"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="200"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <ListBox Grid.Row="2" Grid.Column="1" 
+               VerticalAlignment="Stretch"
+               HorizontalAlignment="Stretch"
+               Style="{StaticResource MenuStyle}"
+               Background="{x:Null}" 
+               BorderBrush="{x:Null}"
+               Name="MenuListBox"
+               ItemsSource="{Binding  FileSingletonModel.ProcessingFileCollection}"
+               >
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="200"/>
+              <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
 
-    <Canvas Grid.Row="1">
-      <Grid Name="BackgroundGrid" Width="60" Height="60" Visibility="Visible" Canvas.Left="190" Canvas.Top="73">
-        <Path Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z" Stretch="Fill" Fill="{StaticResource GreenComplatedSee}" Name="Stroke" Visibility="Visible" Margin="-1,0,1,0" />
-      </Grid>
+            <!--<CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding IsDone, Mode=TwoWay}" />-->
+            <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding File.FileName}" />
+            <ProgressBar Width="100"  Grid.Column="1" Height="5" IsIndeterminate="True" Visibility="{Binding ProgressBarVisibility}"/>
 
+            <Grid Grid.Column="1" Visibility="{Binding DonePathVisibility}">
+              <Grid Name="backgroundGrid" Width="32" Height="32" Visibility="Collapsed" />
+              <Path Data="M29.403992,0L32,3.5860286 8.3720093,21.479001 5.7740173,17.895017 5.776001,17.893002 0,9.9110087 3.5079956,7.2570179 9.2829895,15.23602z" Stretch="Uniform" Fill="#FF17D553" Width="32" Height="32" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                  <TransformGroup>
+                    <TransformGroup.Children>
+                      <RotateTransform Angle="345" />
+                      <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </TransformGroup.Children>
+                  </TransformGroup>
+                </Path.RenderTransform>
+              </Path>
+            </Grid>
+          </Grid>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </Grid>
 
-      <Path Stretch="Uniform" Fill="{StaticResource GreenComplatedSee}" Width="32" Height="32" Canvas.Left="203" Canvas.Top="85"  RenderTransformOrigin="0.5,0.5">
-        <Path.Data>
-          <PathGeometry FillRule="Nonzero" Figures="M32.0625,42.772705078125L25.78125,56.225830078125 10.453125,86.085205078125 32.8125,86.085205078125 32.8125,57.350830078125 32.82421875,55.3674354553223 32.859375,52.2766151428223 32.91796875,48.0783729553223 33,42.772705078125 32.0625,42.772705078125z M29.953125,37.850830078125L38.296875,37.850830078125 38.296875,86.085205078125 48.46875,86.085205078125 48.46875,91.053955078125 38.296875,91.053955078125 38.296875,107.553955078125 32.8125,107.553955078125 32.8125,91.053955078125 4.59375047683716,91.053955078125 4.59375047683716,86.366455078125 29.953125,37.850830078125z" />
-        </Path.Data>
-        <Path.RenderTransform>
-          <TransformGroup>
-            <TransformGroup.Children>
-              <RotateTransform Angle="0" />
-              <ScaleTransform ScaleX="1" ScaleY="1" />
-            </TransformGroup.Children>
-          </TransformGroup>
-        </Path.RenderTransform>
-      </Path>
-
-      <TextBlock Height="34" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="YÜKLENDİ" VerticalAlignment="Top" FontSize="30" Foreground="{StaticResource GreenComplatedSee}" Width="440" Canvas.Top="133" />
-      <CheckBox x:Name="CheckBox" Content="ClientApi Monitor Uygulamasını Başlat" FontSize="14" Foreground="{StaticResource GreenComplatedSee}" Width="350" Canvas.Left="20" Canvas.Top="194" IsChecked="{Binding IsApplicationStart}"/>
-    </Canvas>
-
-    <Grid Row="2">
+  <Grid Row="2">
       <Grid.ColumnDefinitions>
         <ColumnDefinition/>
         <ColumnDefinition/>
