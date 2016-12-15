@@ -31,7 +31,10 @@ namespace Excell.Processor.Interfaces
 
         var index = 1;
         foreach (DataColumn tableColumn in table.Columns)
-          worksheet.Cells[1, index++].Value = tableColumn.ColumnName;
+        {
+          worksheet.Cells[1, index].Value = " ";
+          worksheet.Cells[2, index++].Value = tableColumn.ColumnName;
+        }
 
 
         for (var i = 1; i < table.Rows.Count; i++)
@@ -39,7 +42,7 @@ namespace Excell.Processor.Interfaces
           for (var j = 0; j < table.Columns.Count; j++)
           {
             var value= table.Rows[i][j].ToString();
-            worksheet.Cells[i + 1, j + 1].Value = value;
+            worksheet.Cells[i + 2, j + 1].Value = value;
           }
         }
 
