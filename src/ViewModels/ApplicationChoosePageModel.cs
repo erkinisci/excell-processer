@@ -12,16 +12,6 @@ namespace Excell.Processor.ViewModels
 {
   public class ApplicationChoosePageModel : SetupMainPageModel
   {
-    private ObservableCollection<FileItem> _fileCollection;
-    public ObservableCollection<FileItem> FileCollection
-    {
-      get { return _fileCollection; }
-      set
-      {
-        _fileCollection = value;
-        RaisePropertyChanged(nameof(FileCollection));
-      }
-    }
 
     public override void OnLoaded(FrameworkElement view)
     {

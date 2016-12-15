@@ -138,7 +138,7 @@
               </TextBlock.Style>
             </TextBlock>
           </Canvas>
-          <TextBlock Text="Yükleniyor" VerticalAlignment="Center" FontSize="14" />
+          <TextBlock Text="Kolon Seçimi" VerticalAlignment="Center" FontSize="14" />
         </StackPanel>
       </ListBoxItem>
       <ListBoxItem>

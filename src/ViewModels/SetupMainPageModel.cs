@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Windows;
 using Excell.Processor.Core;
 using Excell.Processor.Models;
@@ -11,6 +12,7 @@ namespace Excell.Processor.ViewModels
   public class SetupMainPageModel : NavigateObject
   {
     public ISetupLogger SetupLogger { get; set; }
+
     public DelegateCommand ReturnCommand { get; set; }
 
     public DelegateCommand NextPageCommand { get; set; }
@@ -19,7 +21,17 @@ namespace Excell.Processor.ViewModels
 
     public new DelegateCommand CloseCommand { get; set; }
 
-    
+    private ObservableCollection<FileItem> _fileCollection;
+    public ObservableCollection<FileItem> FileCollection
+    {
+      get { return _fileCollection; }
+      set
+      {
+        _fileCollection = value;
+        RaisePropertyChanged(nameof(FileCollection));
+      }
+    }
+
     public override void OnLoaded(FrameworkElement view)
     {
       base.OnLoaded(view);
